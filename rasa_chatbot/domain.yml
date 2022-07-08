@@ -8,6 +8,19 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - geo-curiosity
+  - find info:
+    use_entities: true
+
+entities:
+  - country
+
+slots:
+  country: 
+    type: text
+    mappings:
+    - type: from_entity
+      entity: country
 
 responses:
   utter_greet:
@@ -28,6 +41,21 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_geo-curiosity:
+  - text: "Bangkonk's full name is 163 letters"
+  - text: "20% of oxygen is produced by Amazon"
+  - text: "iceland is growing 5cm per year"
+
+actions: 
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_goodbye
+  - utter_iamabot
+  - utter_geo-curiosity
+  - action_find_info
 
 session_config:
   session_expiration_time: 60

@@ -1,0 +1,6 @@
+[
+  {
+    "name": "country",
+    "pattern": "(\\bAlbania\\b|\\bAlgeria\\b|\\bItaly\\b|\\bFrance\\b|\\bSpain\\b|\\bYemen\\b|\\bZambia\\b)"
+  }
+]

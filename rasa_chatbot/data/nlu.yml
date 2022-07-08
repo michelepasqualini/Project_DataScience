@@ -89,3 +89,26 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: geo-curiosity
+  examples: |
+    - tell me some curiosities
+    - teach me something
+    - i want to learn something
+    - give information
+
+- intent: find_info
+  examples: |
+    - can you tell me information about [Italy](country)?
+    - what do you know about [France](country)?
+    - where is [Spain](country)?
+
+- lookup: country
+  examples: |
+    - Albania
+    - Algeria
+    - Italy
+    - France
+    - Spain
+    - Yemen
+    - Zambia
