@@ -1,5 +1,11 @@
 version: "3.1"
 
+config:
+    store_entities_as_slots: true
+session_config:
+    session_expiration_time: 60
+    carry_over_slots_to_new_session: true
+
 intents:
   - greet
   - goodbye
@@ -9,8 +15,8 @@ intents:
   - mood_unhappy
   - bot_challenge
   - geo-curiosity
-  - find info:
-    use_entities: true
+  - find_info:
+        use_entities: true
 
 entities:
   - country
@@ -56,7 +62,6 @@ actions:
   - utter_iamabot
   - utter_geo-curiosity
   - action_find_info
+forms: {}
+e2e_actions: []
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
