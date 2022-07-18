@@ -15,11 +15,17 @@ intents:
   - mood_unhappy
   - bot_challenge
   - geo-curiosity
-  - find_info:
-        use_entities: true
+  - find_info
+  - book_room
+  - num_rooms
+  - type_rooms
+  - book_number_room
 
 entities:
   - country
+  - location
+  - room_type
+  - number
 
 slots:
   country: 
@@ -27,10 +33,50 @@ slots:
     mappings:
     - type: from_entity
       entity: country
+  number: 
+    type: text
+    mappings:
+    - type: from_entity
+      entity: location
+  room_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: room_type
 
 responses:
+
   utter_greet:
   - text: "Hey! How are you?"
+  - text: Hey! How can I help you?
+  - text: Hey there! How can I help you, today?
+
+  utter_submit:
+  - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
+
+  utter_ask_number:
+  - buttons:
+    - payload: /num_rooms{"number":"1"}
+      title: '1'
+    - payload: /num_rooms{"number":"2"}
+      title: '2'
+    text: Select the number of rooms you want to book
+
+  utter_ask_room_type:
+  - buttons:
+    - payload: /type_rooms{"room_type":"Simple"}
+      title: Simple
+    - payload: /type_rooms{"room_type":"Deluxe"}
+      title: Deluxe
+    text: Select from one of the room types
+
+  utter_simple_room_image:
+  - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
+    text: 'Simple room: '
+
+  utter_deluxe_room_image:
+  - image: https://www.mhotel.in/img/super/01.jpg
+    text: 'Deluxe room: '
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -62,6 +108,17 @@ actions:
   - utter_iamabot
   - utter_geo-curiosity
   - action_find_info
-forms: {}
-e2e_actions: []
+  - utter_submit
+  - utter_ask_number
+  - utter_ask_room_type
+
+forms: 
+  form_book_room:
+    required_slots:
+    - room_type
+
+  form_book_room_number:
+    required_slots:
+    - number
+  
 

@@ -112,3 +112,54 @@ nlu:
     - Spain
     - Yemen
     - Zambia
+
+- intent: book_room
+  examples: |
+    - i want a book a [room](location) for my stay
+    - I want to book a [room](location)
+    - i want to book a [room](location)
+    - i would like to book a [room](location)
+    - need a [room](location)
+    - can you book a [room](location)?
+    - book [room](location)
+    - book the [room](location)
+    - book a [room](location)
+    - Book a [Room](location)
+    - Book [room](location) for my stay
+    - book [rooms](location)
+    - book the [rooms](location)
+    - book [room](location)
+    - book the [room](location)
+    - book a [room](location)
+    - Book a [Room](location)
+    - Book [room](location)
+    - book [rooms](location)
+    - book the [rooms](location)
+
+- intent: book_number_room
+  examples: |
+    - i want to book (2)[number] [rooms](location) for my stay
+    - i would like to book [1](number) [room](location)
+    - I want to book [2](number) [rooms](location)
+    - book [2](number) [rooms](location) for me
+    - need [1](number) [room](location)
+    - book [1](number) [room](location)
+    - book [2](number) [rooms](location)
+    - need [2](number) [rooms](location) to book
+
+- intent: num_rooms
+  examples: |
+    - [2](number)
+    - [1](number)
+
+- intent: type_rooms
+    - [Simple](room_type)
+    - [Deluxe](room_type)
+
+
+- synonym: room
+  examples: |
+    - rooms
+    - Room
+    - Rooms
+

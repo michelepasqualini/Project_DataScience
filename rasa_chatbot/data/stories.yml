@@ -51,3 +51,23 @@ stories:
   - action: utter_happy
   - intent: find_info
   - action: action_find_info
+
+- story: book_room path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_number_room
+  - action: form_book_room_number
+  - active_loop: form_book_room_number
+  - slot_was_set:
+    - requested_slot: number
+  - intent: book_room
+  - action: form_book_room
+  - active_loop: form_book_room
+  - slot_was_set:
+    - requested_slot: room_type
+  - intent: affirm
+  - action: utter_submit
+  - intent: goodbye
+  - action: utter_goodbye
+  

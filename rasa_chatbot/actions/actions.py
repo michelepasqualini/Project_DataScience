@@ -7,7 +7,7 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List, Union
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
@@ -38,3 +38,28 @@ class ActionFindInfo(Action):
         dispatcher.utter_message(text=output)
 
         return []
+    
+class BookRoomInfo(Action):
+    def name(self) -> Text:
+        return "form_book_room"
+    
+    def required_slots(tracker: Tracker) -> List[Text]:
+        return ["number", "room_type"]
+    
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        
+        dispatcher.utter_message(template="utter_submit", number=tracker.get_slot('number'),
+                                 room_type=tracker.get_slot('room_type'))
+        return []
+    
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+        
+        return{"number": self.from_entity(entity="number", intent='num_rooms'),
+            "room_type": self.from_entity(entity="room_type", intent="type_rooms")
+        }
+    
