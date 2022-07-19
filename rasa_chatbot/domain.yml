@@ -28,21 +28,27 @@ entities:
   - number
 
 slots:
-  country: 
-    type: text
-    mappings:
-    - type: from_entity
-      entity: country
+
   number: 
     type: text
     mappings:
     - type: from_entity
-      entity: location
+      entity: number
+      conditions:
+          - active_loop: form_book_room
+    - type: from_entity
+        entity: number
+
   room_type:
     type: text
     mappings:
     - type: from_entity
       entity: room_type
+      conditions:
+          - active_loop: form_book_room
+    - type: from_entity
+        entity: room_type
+      
 
 responses:
 
@@ -116,9 +122,6 @@ forms:
   form_book_room:
     required_slots:
     - room_type
-
-  form_book_room_number:
-    required_slots:
     - number
   
 
