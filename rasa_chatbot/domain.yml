@@ -37,7 +37,7 @@ slots:
       conditions:
           - active_loop: form_book_room
     - type: from_entity
-        entity: number
+      entity: number
 
   room_type:
     type: text
@@ -47,7 +47,7 @@ slots:
       conditions:
           - active_loop: form_book_room
     - type: from_entity
-        entity: room_type
+      entity: room_type
       
 
 responses:
@@ -57,24 +57,24 @@ responses:
   - text: Hey! How can I help you?
   - text: Hey there! How can I help you, today?
 
-  utter_submit:
-  - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
+  utter_affirm:
+  - text: 'Your room(s) have been booked. Number of {{room_type}} rooms booked : {{number}}'
 
   utter_ask_number:
-  - buttons:
-    - payload: /num_rooms{"number":"1"}
-      title: '1'
-    - payload: /num_rooms{"number":"2"}
-      title: '2'
-    text: Select the number of rooms you want to book
-
+  - text: Select the number of rooms you want to book
+    buttons:
+    - title: '1'
+      payload: /num_rooms{{"number":"1"}}
+    - title: '2'
+      payload: /num_rooms{{"number":"2"}}
+      
   utter_ask_room_type:
-  - buttons:
-    - payload: /type_rooms{"room_type":"Simple"}
-      title: Simple
-    - payload: /type_rooms{"room_type":"Deluxe"}
-      title: Deluxe
-    text: Select from one of the room types
+  - text: Select from one of the room types
+    buttons:
+    - title: Simple
+      payload: /type_rooms{{"room_type":"Simple"}}
+    - title: Deluxe
+      payload: /type_rooms{{"room_type":"Deluxe"}}
 
   utter_simple_room_image:
   - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
@@ -114,7 +114,7 @@ actions:
   - utter_iamabot
   - utter_geo-curiosity
   - action_find_info
-  - utter_submit
+  - utter_affirm
   - utter_ask_number
   - utter_ask_room_type
 

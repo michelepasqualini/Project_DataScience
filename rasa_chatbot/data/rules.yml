@@ -12,35 +12,8 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Activate form
-  steps: 
+- rule: activating the booking form
+  steps:
   - intent: book_room
   - action: form_book_room
   - active_loop: form_book_room
-
-- rule: Submit form
-  condition:
-  - active_loop: form_book_room
-  steps: 
-    - action: form_book_room
-    - active_loop: null
-    - slot_was_set:
-      - requested_slot: room_type
-    - action: utter_submit
-
-- rule: Activate form
-  steps: 
-  - intent: book_number_room
-  - action: form_book_room_number
-  - active_loop: form_book_room_number
-
-- rule: Submit form
-  condition:
-  - active_loop: form_book_room_number
-  steps: 
-    - action: form_book_room_number
-    - active_loop: null
-    - slot_was_set:
-      - requested_slot: number
-    - action: utter_submit
-

@@ -56,18 +56,15 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: book_number_room
-  - action: form_book_room_number
-  - active_loop: form_book_room_number
-  - slot_was_set:
-    - requested_slot: number
   - intent: book_room
   - action: form_book_room
   - active_loop: form_book_room
   - slot_was_set:
     - requested_slot: room_type
+  - slot_was_set:
+    - requested_slot: number
   - intent: affirm
-  - action: utter_submit
+  - action: utter_affirm
   - intent: goodbye
   - action: utter_goodbye
   

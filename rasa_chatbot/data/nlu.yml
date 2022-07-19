@@ -153,6 +153,7 @@ nlu:
     - [1](number)
 
 - intent: type_rooms
+  examples: |
     - [Simple](room_type)
     - [Deluxe](room_type)
 
