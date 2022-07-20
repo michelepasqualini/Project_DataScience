@@ -20,8 +20,8 @@ nlu:
 - intent: goodbye
   examples: |
     - cu
-    - good by
-    - cee you later
+    - good bye
+    - see you soon
     - good night
     - bye
     - goodbye
@@ -152,11 +152,32 @@ nlu:
     - [2](number)
     - [1](number)
 
+- intent: ask_restaurant
+  examples: |
+    - Does the hotel have a restaurant?
+    - Do you have a restaurant?
+    - Does this hotel have restaurant?
+    - Is there a restaurant in this hotel?
+    - Do you a restaurant here?
+    - What are the timings of your restaurant?
+    - What are the restaurant timings?
+    - Restaurant timings?
+    - Can i know the restaurant timings?
+    - Tell me the timings of this restaurant
+
+
 - intent: type_rooms
   examples: |
     - [Simple](room_type)
     - [Deluxe](room_type)
 
+- intent: see_cleaning_schedule
+  examples: |
+    - Cleaning schedule
+    - See cleaning schedule
+    - Schedule
+    - Cleaning schedule for my room
+    - See cleaning schedule for my room
 
 - synonym: room
   examples: |

@@ -9,15 +9,15 @@ stories:
   - intent: mood_great
   - action: utter_happy
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+#- story: sad path 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: utter_happy
 
 - story: sad path 2
   steps:
@@ -52,19 +52,20 @@ stories:
   - intent: find_info
   - action: action_find_info
 
-- story: book_room path
+- story: cleaning schedule
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: book_room
-  - action: form_book_room
-  - active_loop: form_book_room
-  - slot_was_set:
-    - requested_slot: room_type
-  - slot_was_set:
-    - requested_slot: number
-  - intent: affirm
-  - action: utter_affirm
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: see_cleaning_schedule
+  - action: action_see_cleaning_schedule
+
+#- story: book_room path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: book_room
+#  - action: form_book_room
+#  - active_loop: form_book_room
+#  - intent: affirm
+#  - action: utter_affirm
+#  - intent: goodbye
+#  - action: utter_goodbye
   

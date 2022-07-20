@@ -4,16 +4,13 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
-
-# This is a simple example for a custom action which utters "Hello World!"
-
 from typing import Any, Text, Dict, List
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-import requests
-import json
 
+'''
 class ActionFindInfo(Action):
 
     def name(self) -> Text:
@@ -39,21 +36,43 @@ class ActionFindInfo(Action):
         dispatcher.utter_message(text=output)
 
         return []
+'''
     
-class BookRoomInfo(Action):
+class ActionBookRoom(Action):
     
     def name(self) -> Text:
-        return "form_book_room"
+        return "action_booking_room"
     
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        num_rooms = tracker.get_slot("number")
+        number = tracker.get_slot("number")
         room_type = tracker.get_slot("room_type")
 
-        dispatcher.utter_message(text=f'You have chosen to book {num_rooms} {room_type} rooms.')
+        dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms.')
 
-        return [SlotSet("num_rooms"), SlotSet("room_type"), SlotSet("num_rooms_res", num_rooms), SlotSet("room_type_res", room_type)]
+        return [SlotSet("number"), SlotSet("room_type")]
+    
+    
+class ActionSeeCleaningSchedule(Action):
+    
+    def name(self) -> Text:
+        return "action_see_cleaning_schedule"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        h = tracker.get_slot("hour")
+        m = tracker.get_slot("minute")
+        suff = tracker.get_slot("suff")
+
+        if ((h is None) or (m is None) or (suff is None)):
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+        else:
+            dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.') 
+
+        return []
 
     
