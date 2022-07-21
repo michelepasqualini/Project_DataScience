@@ -21,6 +21,7 @@ intents:
   - type_rooms
   - book_number_room
   - ask_restaurant
+  - schedule_room_cleaning
   - see_cleaning_schedule
 
 entities:
@@ -31,6 +32,8 @@ entities:
   - hour
   - minute
   - suff
+  - duration
+  - time_unit
 
 slots:
 
@@ -71,6 +74,22 @@ slots:
     mappings:
       - type: from_entity
         entity: suff
+  
+  duration:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: duration
+        conditions:
+          - active_loop: form_cleaning
+      - type: from_entity
+        entity: duration
+
+  time_unit:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time_unit
       
 
 responses:
@@ -131,6 +150,9 @@ responses:
   - text: "20% of oxygen is produced by Amazon"
   - text: "iceland is growing 5cm per year"
 
+  utter_ask_duration:
+    - text: When should i arrange for cleaning?
+
   utter_no_cleaning_scheduled:
   - text: We have no cleaning scheduled. Would you like to have your room cleaned?
     buttons:
@@ -150,12 +172,21 @@ actions:
   - utter_affirm
   - utter_ask_number
   - utter_ask_room_type
+  - action_schedule_cleaning
   - action_see_cleaning_schedule
+#  - action_save_reservation
+#  - action_see_reservation
+#  - action_edit_reservation
+
 
 forms: 
   form_book_room:
     required_slots:
     - room_type
     - number
+
+  form_cleaning:
+    required_slots:
+      - duration
   
 

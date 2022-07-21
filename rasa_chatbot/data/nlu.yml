@@ -165,11 +165,23 @@ nlu:
     - Can i know the restaurant timings?
     - Tell me the timings of this restaurant
 
-
 - intent: type_rooms
   examples: |
     - [Simple](room_type)
     - [Deluxe](room_type)
+
+- intent: schedule_room_cleaning
+  examples: |
+    - I would like to have my room cleaned
+    - I want to have my room cleaned
+    - I want my room to be cleaned
+    - Can i get my room cleaned?
+    - Can you please clean my room?
+    - Can you get my room cleaned?
+    - Will you get my room cleaned?
+    - Will you clean my room?
+    - Clean my room
+    - I want my room to be neat and clean     
 
 - intent: see_cleaning_schedule
   examples: |

@@ -28,6 +28,22 @@ rules:
     - requested_slot: null
   - action: action_booking_room
 
+- rule: activating the cleaning form
+  steps:
+  - intent: schedule_room_cleaning
+  - action: form_cleaning
+  - active_loop: form_cleaning
+
+- rule: deactivating the cleaning form
+  condition:
+  - active_loop: form_cleaning
+  steps:
+  - action: form_cleaning
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_schedule_cleaning
+
 - rule: faq ask restaurant
   steps:
   - intent: ask_restaurant
