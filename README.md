@@ -1,5 +1,5 @@
 # Project_DataScience
-## 1) Click - Tableu - Power BI
+## 1) Qlik - Tableau - Power BI
 The  first project conserns an analysis carried out using this three tools. It includes the extraction and visualization and analysis of data from a dataset. The dataset used was about the trending video from Youtube.
 
 ## 2) python
