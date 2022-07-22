@@ -12,34 +12,7 @@ from rasa_sdk.events import SlotSet
 import math
 import datetime as dt
 
-'''
-class ActionFindInfo(Action):
-
-    def name(self) -> Text:
-        return "action_find_info"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name=str(tracker.get_slot('country'))
-        r=requests.get(url='https://restcountries.com/v3.1/name/{}'.format(name.lower()))
-
-        if r.status_code==200:
-            data=r.json()
-            flag=list(data[0]['flags'].values())[0]
-            capital=list(data[0]['capital'][0])
-            moneta=list(data[0]['currencies'][0].values())[0]['name']
-            subregion=data[0]['subregion']
-            area=data[0]['area']
-            output='{} is a state located in {}, the area is {}, the capital is{}, the currencies is {} and you can see the flag at this link {}'
-        else:
-            output='something went wrong'
-        
-        dispatcher.utter_message(text=output)
-
-        return []
-'''
-    
+#action per prenotare una stanza
 class ActionBookRoom(Action):
     
     def name(self) -> Text:
@@ -56,7 +29,7 @@ class ActionBookRoom(Action):
 
         return [SlotSet("number"), SlotSet("room_type")]
     
-    
+# azione per visulizzare la prenotazione della pulizia della stanza    
 class ActionSeeCleaningSchedule(Action):
     
     def name(self) -> Text:
@@ -77,6 +50,7 @@ class ActionSeeCleaningSchedule(Action):
 
         return []
     
+# azione per prenotare la pulizia della camera    
 class ActionScheduleCleaning(Action):
     
     def name(self) -> Text:

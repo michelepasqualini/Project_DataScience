@@ -90,29 +90,6 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: geo-curiosity
-  examples: |
-    - tell me some curiosities
-    - teach me something
-    - i want to learn something
-    - give information
-
-- intent: find_info
-  examples: |
-    - can you tell me information about [Italy](country)?
-    - what do you know about [France](country)?
-    - where is [Spain](country)?
-
-- lookup: country
-  examples: |
-    - Albania
-    - Algeria
-    - Italy
-    - France
-    - Spain
-    - Yemen
-    - Zambia
-
 - intent: book_room
   examples: |
     - i want a book a [room](location) for my stay
@@ -191,9 +168,46 @@ nlu:
     - Cleaning schedule for my room
     - See cleaning schedule for my room
 
+- intent: cleaning_time
+  examples: |
+    - Could you send someone in [2](duration) [hours](time_unit)?
+    - Can you get it cleaned after [3](duration) [hours](time_unit)?
+    - Can you get it cleaned after [1](duration) [hr](time_unit)?
+    - I want it to be cleaned after [30](duration) [minutes](time_unit)?
+    - Can you get it cleaned after [45](duration) [minutes](time_unit)?
+    - Can you get it cleaned after [15](duration) [min](time_unit)?
+    - can you get it cleaned in [two]{"entity":"duration", "value":"2"} [hours](time_unit)
+    - In [2](duration) [hours](time_unit)
+    - After [30](duration) [minutes](time_unit)
+    - After [10](duration) [min](time_unit)
+    - In [15](duration) [m](time_unit)
+    - After [1](duration) [hour](time_unit)
+    - In [1](duration) [minute](time_unit)
+    - In [5](duration) [s](time_unit)
+    - In [one]{"entity":"duration", "value": "1"} [h](time_unit)
+    - After [two]{"entity":"duration", "value":"2"} [hrs](time_unit)
+    - In [three]{"entity":"duration", "value":"3"} [hours](time_unit)
+    - After [fifteen]{"entity":"duration", "value":"15"} [mins](time_unit)
+    - After [forty five]{"entity":"duration", "value":"45"} [minutes](time_unit)
+    - After [thirty]{"entity":"duration", "value":"30"} [minutes](time_unit)
+
 - synonym: room
   examples: |
     - rooms
     - Room
     - Rooms
+
+- synonym: "hour"
+  examples: |
+    - hour
+    - hours
+    - hrs
+    - h
+
+- synonym: "min"
+  examples: |
+    - minute
+    - minutes
+    - mins
+
 

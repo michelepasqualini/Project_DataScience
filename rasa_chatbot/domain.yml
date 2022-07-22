@@ -15,7 +15,6 @@ intents:
   - mood_unhappy
   - bot_challenge
   - geo-curiosity
-  - find_info
   - book_room
   - num_rooms
   - type_rooms
@@ -23,6 +22,7 @@ intents:
   - ask_restaurant
   - schedule_room_cleaning
   - see_cleaning_schedule
+  - cleaning_time
 
 entities:
   - country
@@ -119,12 +119,14 @@ responses:
       payload: /type_rooms{{"room_type":"Deluxe"}}
 
   utter_simple_room_image:
-  - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
-    text: 'Simple room: '
+  - text: 'Simple room: '
+    image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
+    
 
   utter_deluxe_room_image:
-  - image: https://www.mhotel.in/img/super/01.jpg
-    text: 'Deluxe room: '
+  - text: 'Deluxe room: '
+    image: https://www.mhotel.in/img/super/01.jpg
+    
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -144,11 +146,6 @@ responses:
 
   utter_ask_restaurant:
     - text: The hotel has a restaurant. With our menu we strive to reflect the historic art and the spirit of our neighborhood by offering a glimpse into what makes our area unique. Our restaurant serves a dazzling 24-hour menu.
-  
-  utter_geo-curiosity:
-  - text: "Bangkonk's full name is 163 letters"
-  - text: "20% of oxygen is produced by Amazon"
-  - text: "iceland is growing 5cm per year"
 
   utter_ask_duration:
     - text: When should i arrange for cleaning?
@@ -166,8 +163,6 @@ actions:
   - utter_happy
   - utter_goodbye
   - utter_iamabot
-  - utter_geo-curiosity
-  - action_find_info
   - action_booking_room
   - utter_affirm
   - utter_ask_number
