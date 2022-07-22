@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-duration",
+      "2": "I-duration",
+      "3": "L-duration",
+      "4": "U-duration",
+      "5": "B-location",
+      "6": "I-location",
+      "7": "L-location",
+      "8": "U-location",
+      "9": "B-number",
+      "10": "I-number",
+      "11": "L-number",
+      "12": "U-number",
+      "13": "B-room_type",
+      "14": "I-room_type",
+      "15": "L-room_type",
+      "16": "U-room_type",
+      "17": "B-time_unit",
+      "18": "I-time_unit",
+      "19": "L-time_unit",
+      "20": "U-time_unit",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-duration": 1,
+      "I-duration": 2,
+      "L-duration": 3,
+      "U-duration": 4,
+      "B-location": 5,
+      "I-location": 6,
+      "L-location": 7,
+      "U-location": 8,
+      "B-number": 9,
+      "I-number": 10,
+      "L-number": 11,
+      "U-number": 12,
+      "B-room_type": 13,
+      "I-room_type": 14,
+      "L-room_type": 15,
+      "U-room_type": 16,
+      "B-time_unit": 17,
+      "I-time_unit": 18,
+      "L-time_unit": 19,
+      "U-time_unit": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

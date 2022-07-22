@@ -12,11 +12,13 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: activating the booking form
-  steps:
-  - intent: book_room
-  - action: form_book_room
-  - active_loop: form_book_room
+#- rule: activating the booking form
+#  steps:
+#  - intent: book_room
+#  - action: form_book_room
+#  - active_loop: form_book_room
+#  - intent: add_reservation
+#  - action: action_save_reservation
 
 - rule: deactivating the booking form
   condition:
@@ -44,7 +46,42 @@ rules:
     - requested_slot: null
   - action: action_schedule_cleaning
 
-- rule: faq ask restaurant
+- rule: faq ask check in time
   steps:
-  - intent: ask_restaurant
-  - action: utter_ask_restaurant
+  - intent: faq_check_in_time
+  - action: utter_check_in_time
+
+- rule: faq ask check out time
+  steps:
+  - intent: faq_check_out_time
+  - action: utter_check_out_time
+
+- rule: faq ask cancel reservation
+  steps:
+  - intent: faq_cancel_reservation
+  - action: utter_cancel_reservation
+
+- rule: faq ask cancellation policy
+  steps:
+  - intent: faq_cancellation_policy
+  - action: utter_cancellation_policy
+
+- rule: faq ask have restaurant
+  steps:
+  - intent: faq_have_restaurant
+  - action: utter_have_restaurant
+
+- rule: faq ask breakfast avail
+  steps:
+  - intent: faq_breakfast_avail
+  - action: utter_breakfast_avail
+
+- rule: faq ask breakfast time
+  steps:
+  - intent: faq_breakfast_time
+  - action: utter_breakfast_time
+
+- rule: faq ask restaurant time
+  steps:
+  - intent: faq_restaurant_time
+  - action: utter_restaurant_time
