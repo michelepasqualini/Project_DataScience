@@ -299,7 +299,7 @@ nlu:
 - intent: add_reservation
   examples: |
     - Confirm
-    - Save my reservation
+    - save my reservation
     - Add order
     - Save reservation
     - Save order
