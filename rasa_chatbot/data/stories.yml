@@ -39,6 +39,7 @@ stories:
   - intent: book_room
   - action: form_book_room
   - active_loop: form_book_room
+  - action: action_booking_room
   - intent: add_reservation
   - action: action_save_reservation
 

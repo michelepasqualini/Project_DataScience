@@ -20,15 +20,21 @@ rules:
 #  - intent: add_reservation
 #  - action: action_save_reservation
 
-- rule: deactivating the booking form
-  condition:
-  - active_loop: form_book_room
-  steps:
-  - action: form_book_room
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_booking_room
+#- rule: activating the booking form
+#  steps:
+#  - intent: book_room
+#  - action: form_book_room
+#  - active_loop: form_book_room
+
+#- rule: deactivating the booking form
+#  condition:
+#  - active_loop: form_book_room
+#  steps:
+#  - action: form_book_room
+#  - active_loop: null
+#  - slot_was_set:
+#    - requested_slot: null
+#  - action: action_booking_room
 
 - rule: activating the cleaning form
   steps:

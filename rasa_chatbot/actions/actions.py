@@ -116,9 +116,12 @@ class ActionSaveReservation(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        number = tracker.get_slot("number")
-        room_type = tracker.get_slot("room_type")
-        days = tracker.get_slot("days")
+        number =str(tracker.get_slot("number"))
+        room_type = str(tracker.get_slot("room_type"))
+        days = str(tracker.get_slot("days"))
+        print(number)
+        print(room_type)
+        print(days)
         
         #create a random order ID
         reservation_id = f'AA{random_with_N_digits(5)}'
@@ -155,10 +158,11 @@ class ActionSeeReservation(Action):
         
         number = tracker.get_slot("number")
         room_type = tracker.get_slot("room_type")
+        days = tracker.get_slot("days")
         
         if ((number is None) or (room_type is None)):
             dispatcher.utter_message(response='utter_no_reservations')
         else:
-            dispatcher.utter_message(text=f'You have booked {number} {room_type} rooms.') 
+            dispatcher.utter_message(text=f'You have booked {number} {room_type} rooms for {days} days.') 
 
         return []        
