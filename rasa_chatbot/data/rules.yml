@@ -30,6 +30,8 @@ rules:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
   - action: action_booking_room
+  - intent: add_reservation
+  - action: action_save_reservation
 
 - rule: activating the cleaning form
   steps:
