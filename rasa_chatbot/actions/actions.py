@@ -38,7 +38,8 @@ class ActionBookRoom(Action):
 
         dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days.')
 
-        return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
+        #return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
+        return []
     
 # action per visulizzare la prenotazione della pulizia della stanza    
 class ActionSeeCleaningSchedule(Action):

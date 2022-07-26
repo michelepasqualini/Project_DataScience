@@ -51,33 +51,30 @@ slots:
 
   number: 
     type: text
+    influence_conversation: true
     mappings:
     - type: from_entity
       entity: number
       conditions:
           - active_loop: form_book_room
-    - type: from_entity
-      entity: number
 
   room_type:
     type: text
+    influence_conversation: true
     mappings:
     - type: from_entity
       entity: room_type
       conditions:
           - active_loop: form_book_room
-    - type: from_entity
-      entity: room_type
 
   days: 
     type: text
+    influence_conversation: true
     mappings:
     - type: from_entity
       entity: days
       conditions:
           - active_loop: form_book_room
-    - type: from_entity
-      entity: days
   
   hour:
     type: text

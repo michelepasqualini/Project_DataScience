@@ -34,12 +34,8 @@ stories:
   - intent: see_cleaning_schedule
   - action: action_see_cleaning_schedule
 
-- story: activating the booking form
+- story: save reservation path
   steps:
-  - intent: book_room
-  - action: form_book_room
-  - active_loop: form_book_room
-  - action: action_booking_room
   - intent: add_reservation
   - action: action_save_reservation
 

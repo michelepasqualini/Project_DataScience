@@ -12,29 +12,24 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-#- rule: activating the booking form
-#  steps:
-#  - intent: book_room
-#  - action: form_book_room
-#  - active_loop: form_book_room
-#  - intent: add_reservation
-#  - action: action_save_reservation
+- rule: activating the booking form
+  steps:
+  - intent: book_room
+  - action: form_book_room
+  - active_loop: form_book_room
 
-#- rule: activating the booking form
-#  steps:
-#  - intent: book_room
-#  - action: form_book_room
-#  - active_loop: form_book_room
 
-#- rule: deactivating the booking form
-#  condition:
-#  - active_loop: form_book_room
-#  steps:
-#  - action: form_book_room
-#  - active_loop: null
-#  - slot_was_set:
-#    - requested_slot: null
-#  - action: action_booking_room
+- rule: submit booking form
+  condition:
+  # Condition that form is active.
+  - active_loop: form_book_room
+  steps:
+  - action: form_book_room
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_booking_room
 
 - rule: activating the cleaning form
   steps:
@@ -42,7 +37,7 @@ rules:
   - action: form_cleaning
   - active_loop: form_cleaning
 
-- rule: deactivating the cleaning form
+- rule: submit cleaning form
   condition:
   - active_loop: form_cleaning
   steps:
