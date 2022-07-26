@@ -113,6 +113,11 @@ nlu:
     - book [rooms](location)
     - book the [rooms](location)
 
+- intent: show_reservation_id
+  examples: |
+    - Show reservation with ID [AA54367](reservation_id)
+    - Show reservation [AA23658](reservation_id)
+
 - intent: book_number_room
   examples: |
     - i want to book (2)[number] [rooms](location) for my stay
@@ -305,6 +310,18 @@ nlu:
     - Save order
     - save
   
+
+
+
+- regex: reservation_id
+  examples: |
+    - AA\d{5}
+
+
+
+
+
+
 
 - synonym: room
   examples: |

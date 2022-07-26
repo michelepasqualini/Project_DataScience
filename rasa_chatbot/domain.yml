@@ -34,6 +34,7 @@ intents:
   - faq_breakfast_time
   - faq_restaurant_time
   - add_reservation
+  - show_reservation_id
 
 entities:
   - country
@@ -46,6 +47,7 @@ entities:
   - duration
   - time_unit
   - days
+  - reservation_id
 
 slots:
 
@@ -109,6 +111,13 @@ slots:
     mappings:
       - type: from_entity
         entity: time_unit
+
+  reservation_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: reservation_id
       
 
 responses:

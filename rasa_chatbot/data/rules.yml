@@ -49,6 +49,11 @@ rules:
     - requested_slot: null
   - action: action_schedule_cleaning
 
+- rule: see reservation
+  steps:
+  - intent: show_reservation_id
+  - action: action_see_reservation
+
 - rule: faq ask check in time
   steps:
   - intent: faq_check_in_time

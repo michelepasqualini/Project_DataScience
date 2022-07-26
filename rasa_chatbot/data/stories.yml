@@ -34,20 +34,4 @@ stories:
   - intent: see_cleaning_schedule
   - action: action_see_cleaning_schedule
 
-- story: save reservation path
-  steps:
-  - intent: add_reservation
-  - action: action_save_reservation
-
-#- story: book_room path
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: book_room
-#  - action: form_book_room
-#  - active_loop: form_book_room
-#  - intent: affirm
-#  - action: utter_affirm
-#  - intent: goodbye
-#  - action: utter_goodbye
   

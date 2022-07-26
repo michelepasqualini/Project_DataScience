@@ -14,8 +14,10 @@ from random import randint
 import datetime as dt
 import os.path
 import csv
+import pandas as pd
 
-filename = f'./files/reservations.csv'
+reservations_filename = f'./files/reservations.csv'
+clean_filename = f'./files/cleaning.csv'
 
 def random_with_N_digits(n):
     range_start = 10 ** (n - 1)
@@ -36,7 +38,7 @@ class ActionBookRoom(Action):
         room_type = tracker.get_slot("room_type")
         days = tracker.get_slot("days")
 
-        dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days.')
+        dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days. Do you want to confirm your reservation?')
 
         #return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
         return []
@@ -128,12 +130,12 @@ class ActionSaveReservation(Action):
         reservation_id = f'AA{random_with_N_digits(5)}'
 
         #check if reservation file exists
-        if os.path.exists(filename):
+        if os.path.exists(reservations_filename):
             # append if already exists
-            file = open(filename, 'a', newline='')
+            file = open(reservations_filename, 'a', newline='')
         else:
             # make a new file if not
-            file = open(filename, 'w', newline='')
+            file = open(reservations_filename, 'w', newline='')
             writer = csv.writer(file)
             writer.writerow(['Reservation ID', 'Room Type', 'Number of rooms', 'Days'])
 
@@ -157,13 +159,26 @@ class ActionSeeReservation(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        number = tracker.get_slot("number")
-        room_type = tracker.get_slot("room_type")
-        days = tracker.get_slot("days")
+        reservation_id = str(tracker.get_slot('reservation_id'))
         
-        if ((number is None) or (room_type is None)):
+        df = pd.read_csv(reservations_filename)
+
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Reservation ID'] == reservation_id
+        reservation_index = index[condition]
+        if len(reservation_index) == 0:
+            # reservation not found
+            # send message to the user
             dispatcher.utter_message(response='utter_no_reservations')
         else:
+            # get details
+            number = df.loc[reservation_index[0], 'Number of rooms']
+            room_type = df.loc[reservation_index[0], 'Room Type']
+            days = df.loc[reservation_index[0], 'Days']
+
             dispatcher.utter_message(text=f'You have booked {number} {room_type} rooms for {days} days.') 
+
+        #return [SlotSet('order_id', None)]  # per ripulire lo slot finita una storia
 
         return []        
