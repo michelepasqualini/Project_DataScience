@@ -122,9 +122,6 @@ class ActionSaveReservation(Action):
         number =str(tracker.get_slot("number"))
         room_type = str(tracker.get_slot("room_type"))
         days = str(tracker.get_slot("days"))
-        print(number)
-        print(room_type)
-        print(days)
         
         #create a random order ID
         reservation_id = f'AA{random_with_N_digits(5)}'
@@ -144,14 +141,12 @@ class ActionSaveReservation(Action):
         file.close()
         dispatcher.utter_message(text=f'Your reservation is safe and sound! The reservation ID is {reservation_id}.')
         # ripulire slot finita una storia
-        SlotSet('number', None)
-        SlotSet('room_type', None)
-        SlotSet('days', None)
+        
+        return [SlotSet("reservation_id"), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
 
-        return []
-
-    
+# action per visualizzate una prenotazione    
 class ActionSeeReservation(Action):
+    
     def name(self) -> Text:
         return "action_see_reservation"
     
@@ -177,8 +172,43 @@ class ActionSeeReservation(Action):
             room_type = df.loc[reservation_index[0], 'Room Type']
             days = df.loc[reservation_index[0], 'Days']
 
-            dispatcher.utter_message(text=f'You have booked {number} {room_type} rooms for {days} days.') 
+            dispatcher.utter_message(text=f'The reservation {reservation_id} have booked {number} {room_type} rooms for {days} days.') 
 
-        #return [SlotSet('order_id', None)]  # per ripulire lo slot finita una storia
+        return [SlotSet('reservation_id', None)]  # per ripulire lo slot finita una storia
 
-        return []        
+        
+# action per modificare una prenotazione
+class ActionEditReservation(Action):
+
+    def name(self) -> Text:
+        return 'action_edit_reservation'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        reservation_id = str(tracker.get_slot('reservation_id'))
+        number = tracker.get_slot("number")
+        room_type = tracker.get_slot("room_type")
+        days = tracker.get_slot("days")
+
+        df = pd.read_csv(reservations_filename)
+
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Reservation ID'] == reservation_id
+        reservation_index = index[condition]
+        if len(reservation_index) == 0:
+            # reservation not found
+            # send message to the user
+            dispatcher.utter_message(response='utter_no_reservations')
+        else:
+            df.loc[reservation_index[0], 'Number of rooms'] = number
+            df.loc[reservation_index[0], 'Room Type'] = room_type
+            df.loc[reservation_index[0], 'Days'] = days
+            # save the file
+            df.to_csv(reservations_filename, index=False)
+            dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been updated with success!')
+              
+        
+        return [SlotSet("reservation_id"), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]

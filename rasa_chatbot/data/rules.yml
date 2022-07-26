@@ -18,7 +18,6 @@ rules:
   - action: form_book_room
   - active_loop: form_book_room
 
-
 - rule: submit booking form
   condition:
   # Condition that form is active.
@@ -53,6 +52,22 @@ rules:
   steps:
   - intent: show_reservation_id
   - action: action_see_reservation
+
+- rule: activating the edit booking form
+  steps:
+  - intent: edit_reservation
+  - action: form_edit_book_room
+  - active_loop: form_edit_book_room
+
+- rule: submit edit reservation
+  condition:
+  - active_loop: form_edit_book_room
+  steps: 
+  - action: form_edit_book_room
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null 
+  - action: action_edit_reservation
 
 - rule: faq ask check in time
   steps:
