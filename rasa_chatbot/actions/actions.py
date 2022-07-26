@@ -24,6 +24,12 @@ def random_with_N_digits(n):
     range_end = (10 ** n) - 1
     return randint(range_start, range_end)
 
+
+##########################################################################
+############################### RESERVATION ##############################
+##########################################################################
+
+
 #action per prenotare una stanza
 class ActionBookRoom(Action):
     
@@ -39,76 +45,10 @@ class ActionBookRoom(Action):
         days = tracker.get_slot("days")
 
         dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days. Do you want to confirm your reservation?')
-
-        #return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
+       
         return []
     
-# action per visulizzare la prenotazione della pulizia della stanza    
-class ActionSeeCleaningSchedule(Action):
-    
-    def name(self) -> Text:
-        return "action_see_cleaning_schedule"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        h = tracker.get_slot("hour")
-        m = tracker.get_slot("minute")
-        suff = tracker.get_slot("suff")
-
-        if ((h is None) or (m is None) or (suff is None)):
-            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
-        else:
-            dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.') 
-
-        return []
-    
-# action per prenotare la pulizia della camera    
-class ActionScheduleCleaning(Action):
-    
-    def name(self) -> Text:
-        return "action_schedule_cleaning"
-    
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        duration = tracker.get_slot("duration")
-        unit = tracker.get_slot("time_unit")
-        
-        if duration is None:
-            dispatcher.utter_message(text='Sure, i will send someone to your room right away.')
-            return [SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
-
-        if unit is None:
-            dispatcher.utter_message(text='Sure, sending a cleaner to your room.')
-            return [SlotSet("duration"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
-
-        time_tuple = dt.datetime.now().timetuple()
-        h = time_tuple[3]
-        m = time_tuple[4]
-
-        if unit == "min":
-            m += int(duration)
-            if m > 60:
-                h += int(m/60)
-                m = m % 60
-
-        elif unit == "hour":
-            h += int(duration)
-
-        h = h % 24
-        if h > 12:
-            h = h - 12
-            suff = 'PM'
-        else:
-            suff = 'AM'
-        m = "%02d" % m
-        dispatcher.utter_message(text=f'Sure, i have scheduled a cleaning for {h}:{m} {suff}.') 
-
-        return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour", h), SlotSet("minute", m), SlotSet("suff", suff)]
-  
 #action per salvare una prenotazione       
 class ActionSaveReservation(Action): 
     
@@ -139,11 +79,12 @@ class ActionSaveReservation(Action):
         writer = csv.writer(file)
         writer.writerow([reservation_id, room_type, number, days])
         file.close()
-        dispatcher.utter_message(text=f'Your reservation is safe and sound! The reservation ID is {reservation_id}.')
+        dispatcher.utter_message(text=f'Your reservation has been confirmed! The reservation ID is {reservation_id}.')
         # ripulire slot finita una storia
-        
-        return [SlotSet("reservation_id"), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
-
+                
+        return [SlotSet("reservation_id",reservation_id), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
+    
+    
 # action per visualizzate una prenotazione    
 class ActionSeeReservation(Action):
     
@@ -243,5 +184,81 @@ class ActionDeleteReservation(Action):
             df.to_csv(reservations_filename, index=False)
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
               
+        return []
+        #return [SlotSet("reservation_id")]
+
+
+##########################################################################
+################################ CLEANING ################################
+##########################################################################
+
+
+    
+# action per prenotare la pulizia della camera    
+class ActionScheduleCleaning(Action):
+    
+    def name(self) -> Text:
+        return "action_schedule_cleaning"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        return [SlotSet("reservation_id")]
+        duration = tracker.get_slot("duration")
+        unit = tracker.get_slot("time_unit")
+        
+        if duration is None:
+            dispatcher.utter_message(text='Sure, i will send someone to your room right away.')
+            return [SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        if unit is None:
+            dispatcher.utter_message(text='Sure, sending a cleaner to your room.')
+            return [SlotSet("duration"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        time_tuple = dt.datetime.now().timetuple()
+        h = time_tuple[3]
+        m = time_tuple[4]
+
+        if unit == "min":
+            m += int(duration)
+            if m > 60:
+                h += int(m/60)
+                m = m % 60
+
+        elif unit == "hour":
+            h += int(duration)
+
+        h = h % 24
+        if h > 12:
+            h = h - 12
+            suff = 'PM'
+        else:
+            suff = 'AM'
+        m = "%02d" % m
+        dispatcher.utter_message(text=f'Sure, i have scheduled a cleaning for {h}:{m} {suff}.') 
+
+        return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour", h), SlotSet("minute", m), SlotSet("suff", suff)]
+  
+
+
+
+# action per visulizzare la prenotazione della pulizia della stanza    
+class ActionSeeCleaningSchedule(Action):
+    
+    def name(self) -> Text:
+        return "action_see_cleaning_schedule"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        h = tracker.get_slot("hour")
+        m = tracker.get_slot("minute")
+        suff = tracker.get_slot("suff")
+
+        if ((h is None) or (m is None) or (suff is None)):
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+        else:
+            dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.') 
+
+        return []

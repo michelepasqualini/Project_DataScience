@@ -133,8 +133,7 @@ nlu:
     - remove reservation [AA23658](reservation_id)
     - cancel reservation with ID [AA54367](reservation_id)
     - cancel reservation [AA23658](reservation_id)
-    
-    
+    - delete 
 
 - intent: book_number_room
   examples: |

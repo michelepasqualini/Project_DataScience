@@ -29,9 +29,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: cleaning schedule
-  steps:
-  - intent: see_cleaning_schedule
-  - action: action_see_cleaning_schedule
+
 
   

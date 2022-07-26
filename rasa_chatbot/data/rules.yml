@@ -12,6 +12,7 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+#BOOKING ROOM
 - rule: activating the booking form
   steps:
   - intent: book_room
@@ -32,6 +33,7 @@ rules:
   - intent: add_reservation
   - action: action_save_reservation
 
+#CLEANING ROOM
 - rule: activating the cleaning form
   steps:
   - intent: schedule_room_cleaning
@@ -48,16 +50,25 @@ rules:
     - requested_slot: null
   - action: action_schedule_cleaning
 
+#SEE CLEANING
+- rule: see cleaning schedule
+  steps:
+  - intent: see_cleaning_schedule
+  - action: action_see_cleaning_schedule
+
+#SEE RESERVATION
 - rule: see reservation
   steps:
   - intent: show_reservation_id
   - action: action_see_reservation
 
+#DELETE RESERVATION
 - rule: delete reservation
   steps:
   - intent: delete_reservation
   - action: action_delete_reservation
 
+#EDIR BOOKING ROOM
 - rule: activating the edit booking form
   steps:
   - intent: edit_reservation
@@ -74,6 +85,7 @@ rules:
     - requested_slot: null 
   - action: action_edit_reservation
 
+#FAQ
 - rule: faq ask check in time
   steps:
   - intent: faq_check_in_time
