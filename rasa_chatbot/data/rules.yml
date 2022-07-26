@@ -53,6 +53,11 @@ rules:
   - intent: show_reservation_id
   - action: action_see_reservation
 
+- rule: delete reservation
+  steps:
+  - intent: delete_reservation
+  - action: action_delete_reservation
+
 - rule: activating the edit booking form
   steps:
   - intent: edit_reservation

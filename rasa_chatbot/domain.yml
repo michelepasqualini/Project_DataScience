@@ -36,6 +36,7 @@ intents:
   - add_reservation
   - show_reservation_id
   - edit_reservation
+  - delete_reservation
 
 entities:
   - country
@@ -259,6 +260,7 @@ actions:
   - action_save_reservation
   - action_see_reservation
   - action_edit_reservation
+  - action_delete_reservation
 
 
 forms: 

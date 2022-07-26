@@ -213,3 +213,35 @@ class ActionEditReservation(Action):
         
         return [SlotSet("reservation_id"), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
 
+# action per modificare una prenotazione
+class ActionDeleteReservation(Action):
+
+    def name(self) -> Text:
+        return 'action_delete_reservation'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        reservation_id = str(tracker.get_slot('reservation_id'))
+
+        df = pd.read_csv(reservations_filename)
+
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Reservation ID'] == reservation_id
+        reservation_index = index[condition]
+
+        if len(reservation_index) == 0:
+            # reservation not found
+            # send message to the user
+            dispatcher.utter_message(response='utter_no_reservations')
+        else:
+            df = df.drop(reservation_index[0])
+
+            # save the file
+            df.to_csv(reservations_filename, index=False)
+            dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
+              
+        
+        return [SlotSet("reservation_id")]

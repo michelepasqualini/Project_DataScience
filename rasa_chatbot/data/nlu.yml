@@ -125,6 +125,17 @@ nlu:
     - edit reservation with ID [AA54367](reservation_id)
     - edit reservation [AA23658](reservation_id)
 
+- intent: delete_reservation
+  examples: |
+    - delete reservation with ID [AA54367](reservation_id)
+    - delete reservation [AA23658](reservation_id)
+    - remove reservation with ID [AA54367](reservation_id)
+    - remove reservation [AA23658](reservation_id)
+    - cancel reservation with ID [AA54367](reservation_id)
+    - cancel reservation [AA23658](reservation_id)
+    
+    
+
 - intent: book_number_room
   examples: |
     - i want to book (2)[number] [rooms](location) for my stay
