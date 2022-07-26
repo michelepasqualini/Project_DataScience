@@ -96,6 +96,10 @@ class ActionSeeReservation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         reservation_id = str(tracker.get_slot('reservation_id'))
+       
+        if(reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the reservation ID!')
+            return []
         
         df = pd.read_csv(reservations_filename)
 
@@ -115,7 +119,7 @@ class ActionSeeReservation(Action):
 
             dispatcher.utter_message(text=f'The reservation {reservation_id} have booked {number} {room_type} rooms for {days} days.') 
 
-        return [SlotSet('reservation_id', None)]  # per ripulire lo slot finita una storia
+        return []  
 
         
 # action per modificare una prenotazione
@@ -129,6 +133,11 @@ class ActionEditReservation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         reservation_id = str(tracker.get_slot('reservation_id'))
+
+        if(reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the reservation ID!')
+            return []
+
         number = tracker.get_slot("number")
         room_type = tracker.get_slot("room_type")
         days = tracker.get_slot("days")
@@ -152,7 +161,7 @@ class ActionEditReservation(Action):
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been updated with success!')
               
         
-        return [SlotSet("reservation_id"), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
+        return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
 
 # action per modificare una prenotazione
 class ActionDeleteReservation(Action):
@@ -165,6 +174,11 @@ class ActionDeleteReservation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         reservation_id = str(tracker.get_slot('reservation_id'))
+
+        if(reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the reservation ID!')
+            return []
+        
 
         df = pd.read_csv(reservations_filename)
 
@@ -183,9 +197,8 @@ class ActionDeleteReservation(Action):
             # save the file
             df.to_csv(reservations_filename, index=False)
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
-              
-        return []
-        #return [SlotSet("reservation_id")]
+        
+        return [SlotSet("reservation_id")]
 
 
 ##########################################################################

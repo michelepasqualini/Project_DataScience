@@ -119,11 +119,22 @@ nlu:
     - Show reservation [AA23658](reservation_id)
     - see reservation with ID [AA54367](reservation_id)
     - see reservation [AA23658](reservation_id)
+    - see reservation
+    - show reservation
+    - see
+    - show
 
 - intent: edit_reservation
   examples: |
     - edit reservation with ID [AA54367](reservation_id)
     - edit reservation [AA23658](reservation_id)
+    - modify reservation with ID [AA54367](reservation_id)
+    - modify reservation [AA23658](reservation_id)
+    - edit reservation
+    - modify reservation
+    - edit
+    - modify
+    
 
 - intent: delete_reservation
   examples: |
@@ -133,7 +144,12 @@ nlu:
     - remove reservation [AA23658](reservation_id)
     - cancel reservation with ID [AA54367](reservation_id)
     - cancel reservation [AA23658](reservation_id)
-    - delete 
+    - delete reservation 
+    - cancel reservation
+    - remove reservation
+    - remove 
+    - delete
+    - cancel
 
 - intent: book_number_room
   examples: |
