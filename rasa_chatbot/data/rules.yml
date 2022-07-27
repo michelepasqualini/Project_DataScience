@@ -48,6 +48,23 @@ rules:
     - requested_slot: null
   - action: action_schedule_cleaning
 
+#EDIT BOOKING ROOM
+- rule: activating the edit booking room form
+  steps:
+  - intent: edit_reservation
+  - action: form_edit_book_room
+  - active_loop: form_edit_book_room
+
+- rule: submit edit booking room form
+  condition:
+  - active_loop: form_edit_book_room
+  steps:
+  - action: form_edit_book_room
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_edit_reservation
+  
 #FAQ
 - rule: faq ask check in time
   steps:
