@@ -2,13 +2,94 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: welcome path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 
+- story: goodbye path
+  steps: 
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+#BOOKING ROOM
+#
+#- story: activating the booking form
+# steps:
+# - intent: book_room
+#  - action: form_book_room
+#  - active_loop: form_book_room
+#  - checkpoint: check_form_book_room
+#
+#- story: submit booking form
+#  steps:
+#  - checkpoint: check_form_book_room
+#  - action: form_book_room
+#  - active_loop: null
+#  - slot_was_set:
+#    - requested_slot: null
+#  # The actions we want to run when the form is submitted.
+#  - action: action_booking_room
+#  - intent: add_reservation
+#  - action: action_save_reservation
+
+- story: booking path
+  steps:
+  - intent: book_room
+  - action: form_book_room
+  - active_loop: form_book_room
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_booking_room
+  - intent: add_reservation
+  - action: action_save_reservation
+
+- story: cleaning path
+  steps:
+  - intent: schedule_room_cleaning
+  - action: form_cleaning
+  - active_loop: form_cleaning
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_schedule_cleaning
+
+#SEE CLEANING
+- story: see cleaning schedule
+  steps:
+  - intent: see_cleaning_schedule
+  - action: action_see_cleaning_schedule
+
+#SEE RESERVATION
+- story: see reservation
+  steps:
+  - intent: show_reservation_id
+  - action: action_see_reservation
+
+#DELETE RESERVATION
+- story: delete reservation
+  steps:
+  - intent: delete_reservation
+  - action: action_delete_reservation
+
+#EDIT BOOKING ROOM
+- story: activating the edit booking form
+  steps:
+  - intent: edit_reservation
+  - action: form_edit_book_room
+  - active_loop: form_edit_book_room
+  - checkpoint: check_form_edit_book_room
+
+- story: submit edit reservation
+  steps: 
+  - checkpoint: check_form_edit_book_room
+  - action: form_edit_book_room
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null 
+  - action: action_edit_reservation
 
 
 

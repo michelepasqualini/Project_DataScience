@@ -63,6 +63,10 @@ class ActionSaveReservation(Action):
         room_type = str(tracker.get_slot("room_type"))
         days = str(tracker.get_slot("days"))
         
+        if ((number=="None") or (room_type=="None") or (days=="None")):
+            dispatcher.utter_message(text=f'Error: firstly book a room!')
+            return []
+        
         #create a random order ID
         reservation_id = f'AA{random_with_N_digits(5)}'
 
@@ -275,3 +279,5 @@ class ActionSeeCleaningSchedule(Action):
             dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.') 
 
         return []
+
+

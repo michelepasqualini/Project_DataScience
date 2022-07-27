@@ -30,8 +30,6 @@ rules:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
   - action: action_booking_room
-  - intent: add_reservation
-  - action: action_save_reservation
 
 #CLEANING ROOM
 - rule: activating the cleaning form
@@ -49,41 +47,6 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_schedule_cleaning
-
-#SEE CLEANING
-- rule: see cleaning schedule
-  steps:
-  - intent: see_cleaning_schedule
-  - action: action_see_cleaning_schedule
-
-#SEE RESERVATION
-- rule: see reservation
-  steps:
-  - intent: show_reservation_id
-  - action: action_see_reservation
-
-#DELETE RESERVATION
-- rule: delete reservation
-  steps:
-  - intent: delete_reservation
-  - action: action_delete_reservation
-
-#EDIR BOOKING ROOM
-- rule: activating the edit booking form
-  steps:
-  - intent: edit_reservation
-  - action: form_edit_book_room
-  - active_loop: form_edit_book_room
-
-- rule: submit edit reservation
-  condition:
-  - active_loop: form_edit_book_room
-  steps: 
-  - action: form_edit_book_room
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null 
-  - action: action_edit_reservation
 
 #FAQ
 - rule: faq ask check in time
@@ -125,3 +88,4 @@ rules:
   steps:
   - intent: faq_restaurant_time
   - action: utter_restaurant_time
+

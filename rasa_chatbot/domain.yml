@@ -233,6 +233,9 @@ responses:
     buttons:
       - title: Book a room
         payload: /book_room
+  
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
 
 actions: 
   - utter_greet
@@ -261,6 +264,7 @@ actions:
   - action_see_reservation
   - action_edit_reservation
   - action_delete_reservation
+  - utter_default
 
 
 forms: 
