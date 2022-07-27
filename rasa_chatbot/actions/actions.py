@@ -221,6 +221,12 @@ class ActionScheduleCleaning(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        reservation_id = str(tracker.get_slot('reservation_id'))
+
+        if(reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the reservation ID!')
+            return []
+
         duration = tracker.get_slot("duration")
         unit = tracker.get_slot("time_unit")
         
@@ -252,9 +258,27 @@ class ActionScheduleCleaning(Action):
         else:
             suff = 'AM'
         m = "%02d" % m
+       
+        #create a random order ID
+        cleaning_id = f'CC{random_with_N_digits(5)}'
+
+        #check if reservation file exists
+        if os.path.exists(clean_filename):
+            # append if already exists
+            file = open(clean_filename, 'a', newline='')
+        else:
+            # make a new file if not
+            file = open(clean_filename, 'w', newline='')
+            writer = csv.writer(file)
+            writer.writerow(['Cleaning ID', 'Reservation ID', "Hours", "Minutes","Suff"])
+
+        writer = csv.writer(file)
+        writer.writerow([cleaning_id, reservation_id, h, m, suff])
+        file.close()
+
         dispatcher.utter_message(text=f'Sure, i have scheduled a cleaning for {h}:{m} {suff}.') 
 
-        return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour", h), SlotSet("minute", m), SlotSet("suff", suff)]
+        return [SlotSet("cleaning_id", cleaning_id), SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
   
 
 

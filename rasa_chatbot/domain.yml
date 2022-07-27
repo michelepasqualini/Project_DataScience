@@ -50,6 +50,7 @@ entities:
   - time_unit
   - days
   - reservation_id
+  - cleaning_id
 
 slots:
 
@@ -73,7 +74,6 @@ slots:
           - active_loop: form_book_room
           - active_loop: form_edit_book_room
 
-
   days: 
     type: text
     influence_conversation: true
@@ -84,7 +84,6 @@ slots:
           - active_loop: form_book_room
           - active_loop: form_edit_book_room
 
-  
   hour:
     type: text
     mappings:
@@ -125,6 +124,13 @@ slots:
     mappings:
       - type: from_entity
         entity: reservation_id
+
+  cleaning_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: cleaning_id
       
 
 responses:
@@ -282,6 +288,6 @@ forms:
 
   form_cleaning:
     required_slots:
-      - duration
+    - duration
   
 

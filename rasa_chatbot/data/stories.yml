@@ -38,7 +38,7 @@ stories:
   - action: action_schedule_cleaning
 
 #SEE CLEANING
-- story: see cleaning schedule
+- story: see cleaning schedule path
   steps:
   - intent: see_cleaning_schedule
   - action: action_see_cleaning_schedule
