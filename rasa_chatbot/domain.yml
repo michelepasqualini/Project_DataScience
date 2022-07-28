@@ -195,10 +195,7 @@ responses:
     - text: When should i arrange for cleaning?
 
   utter_no_cleaning_scheduled:
-  - text: We have no cleaning scheduled. Would you like to have your room cleaned?
-    buttons:
-      - title: Clean my room
-        payload: /schedule_room_cleaning
+  - text: We have no cleaning scheduled.    
     
   utter_check_in_time:
   - text: Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact

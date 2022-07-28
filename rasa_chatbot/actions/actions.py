@@ -185,11 +185,15 @@ class ActionDeleteReservation(Action):
         
 
         df = pd.read_csv(reservations_filename)
+        df2 = pd.read_csv(clean_filename)
 
         # get index of the row with specified order ID
         index = df.index
+        index2= df2.index
         condition = df['Reservation ID'] == reservation_id
+        condition2 = df2['Reservation ID'] == reservation_id
         reservation_index = index[condition]
+        cleaning_index = index2[condition2]
 
         if len(reservation_index) == 0:
             # reservation not found
@@ -197,12 +201,14 @@ class ActionDeleteReservation(Action):
             dispatcher.utter_message(response='utter_no_reservations')
         else:
             df = df.drop(reservation_index[0])
+            df2= df2.drop(cleaning_index)
 
             # save the file
             df.to_csv(reservations_filename, index=False)
+            df2.to_csv(clean_filename, index=False)
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
         
-        return [SlotSet("reservation_id")]
+        return [SlotSet("reservation_id"), SlotSet("cleaning_id")]
 
 
 ##########################################################################
@@ -293,15 +299,41 @@ class ActionSeeCleaningSchedule(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        h = tracker.get_slot("hour")
-        m = tracker.get_slot("minute")
-        suff = tracker.get_slot("suff")
+         
+        cleaning_id = str(tracker.get_slot('cleaning_id'))
+        reservation_id = str(tracker.get_slot('reservation_id'))
+       
+        if(cleaning_id == "None" and reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
+            return []
+        
+        df = pd.read_csv(clean_filename)
 
-        if ((h is None) or (m is None) or (suff is None)):
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Cleaning ID'] == cleaning_id
+        cleaning_index = index[condition]
+
+        if(len(cleaning_index) == 0 and cleaning_id == "None"):
+            condition = df['Reservation ID'] == reservation_id
+            cleaning_index = index[condition]
+        elif (len(cleaning_index) == 0 and cleaning_id != "None"):
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+            return []
+        
+        if len(cleaning_index) == 0:
+            # reservation not found
+            # send message to the user    
+
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
         else:
-            dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.') 
+            # get details
+            h = df.loc[cleaning_index[0], 'Hours']
+            m = df.loc[cleaning_index[0], 'Minutes']
+            suff = df.loc[cleaning_index[0], 'Suff']
 
-        return []
+            dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.')
+
+        return [SlotSet("cleaning_id"),SlotSet("reservation_id")]  
 
 
