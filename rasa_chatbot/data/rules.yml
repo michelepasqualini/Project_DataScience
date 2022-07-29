@@ -65,7 +65,36 @@ rules:
     - requested_slot: null
   - action: action_edit_reservation
 
+#EDIT CLEANING ROOM
+- rule: activating the edit cleaning room form
+  condition:
+  - slot_was_set:
+    - error: false
+  steps:
+  - intent: edit_cleaning_room
+  - action: action_check_cleaning_room
+  - action: form_edit_cleaning_room
+  - active_loop: form_edit_cleaning_room
 
+- rule: activating the edit cleaning room form with error
+  condition:
+  - slot_was_set:
+    - error: true
+  steps:
+  - intent: edit_cleaning_room
+  - action: action_check_cleaning_room
+  
+  
+
+- rule: submit edit cleaning room form
+  condition:
+  - active_loop: form_edit_cleaning_room
+  steps:
+  - action: form_edit_cleaning_room
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_edit_cleaning_room
   
 #FAQ
 - rule: faq ask check in time

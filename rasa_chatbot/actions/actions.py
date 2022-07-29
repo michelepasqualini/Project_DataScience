@@ -334,6 +334,127 @@ class ActionSeeCleaningSchedule(Action):
 
             dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.')
 
-        return [SlotSet("cleaning_id"),SlotSet("reservation_id")]  
+        return [SlotSet("cleaning_id"), SlotSet("reservation_id")]  
+    
+class ActionCheckCleaningRoom(Action):
+    def name(self) -> Text:
+        return 'action_check_cleaning_room'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        cleaning_id = str(tracker.get_slot('cleaning_id'))
+        reservation_id = str(tracker.get_slot('reservation_id'))     
+
+        if(cleaning_id == "None" and reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
+            return [SlotSet("error", True)]
+
+        df = pd.read_csv(clean_filename)
+
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Cleaning ID'] == cleaning_id
+        cleaning_index = index[condition]
+
+        if(len(cleaning_index) == 0 and cleaning_id == "None"):
+            condition = df['Reservation ID'] == reservation_id
+            cleaning_index = index[condition]
+        elif (len(cleaning_index) == 0 and cleaning_id != "None"):
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+            return [[SlotSet("error", True)]]
+
+        # get index of the row with specified order ID
+        if len(cleaning_index) == 0:
+            # reservation not found
+            # send message to the user
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+            return [[SlotSet("error", True)]]
+        
+        return [[SlotSet("error", False)]]
+
+class ActionEditCleaningRoom(Action):
+
+    def name(self) -> Text:
+        return 'action_edit_cleaning_room'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        cleaning_id = str(tracker.get_slot('cleaning_id'))
+        reservation_id = str(tracker.get_slot('reservation_id'))     
+
+        if(cleaning_id == "None" and reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
+            return []
+        
+        df = pd.read_csv(clean_filename)
+      
+
+        duration = tracker.get_slot("duration")
+        unit = tracker.get_slot("time_unit")
+        
+        if duration is None:
+            dispatcher.utter_message(text='Sure, i will send someone to your room right away.')
+            return [SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        if unit is None:
+            dispatcher.utter_message(text='Sure, sending a cleaner to your room.')
+            return [SlotSet("duration"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        time_tuple = dt.datetime.now().timetuple()
+        h = time_tuple[3]
+        m = time_tuple[4]
+
+        if unit == "min":
+            m += int(duration)
+            if m > 60:
+                h += int(m/60)
+                m = m % 60
+
+        elif unit == "hour":
+            h += int(duration)
+
+        h = h % 24
+        if h > 12:
+            h = h - 12
+            suff = 'PM'
+        else:
+            suff = 'AM'
+        m = "%02d" % m
+       
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Cleaning ID'] == cleaning_id
+        cleaning_index = index[condition]
+
+        if(len(cleaning_index) == 0 and cleaning_id == "None"):
+            condition = df['Reservation ID'] == reservation_id
+            cleaning_index = index[condition]
+        elif (len(cleaning_index) == 0 and cleaning_id != "None"):
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+            return []
+
+        # get index of the row with specified order ID
+        if len(cleaning_index) == 0:
+            # reservation not found
+            # send message to the user
+            dispatcher.utter_message(response='utter_no_cleaning_scheduled')
+
+        else:           
+
+            # get details
+            df.loc[cleaning_index[0], 'Hours'] = h
+            df.loc[cleaning_index[0], 'Minutes'] = m
+            df.loc[cleaning_index[0], 'Suff'] = suff
+
+            # save the file
+            df.to_csv(clean_filename, index=False)
+            dispatcher.utter_message(text=f'The cleaning with the ID {cleaning_id} has been updated with success!')
+              
+        
+        return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
 
 

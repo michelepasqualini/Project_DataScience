@@ -37,6 +37,7 @@ intents:
   - show_reservation_id
   - edit_reservation
   - delete_reservation
+  - edit_cleaning_room
 
 entities:
   - country
@@ -51,6 +52,7 @@ entities:
   - days
   - reservation_id
   - cleaning_id
+  - error
 
 slots:
 
@@ -131,6 +133,18 @@ slots:
     mappings:
       - type: from_entity
         entity: cleaning_id
+
+  error:
+    type: bool
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: error
+
+
+  
+
+  
       
 
 responses:
@@ -267,6 +281,8 @@ actions:
   - action_see_reservation
   - action_edit_reservation
   - action_delete_reservation
+  - action_edit_cleaning_room
+  - action_check_cleaning_room
   - utter_default
 
 
@@ -287,4 +303,6 @@ forms:
     required_slots:
     - duration
   
-
+  form_edit_cleaning_room:
+    required_slots:
+    - duration

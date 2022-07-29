@@ -172,8 +172,7 @@ nlu:
     - Cleaning schedule with reservation ID [AA54367](reservation_id) for my room
     - See cleaning schedule with ID [CC54367](cleaning_id) for my room
     - See cleaning schedule with reservation ID [AA54367](reservation_id) for my room
-    - See cleaning schedule
-    - Cleaning schedule
+ 
 
 - intent: cleaning_time
   examples: |
@@ -197,6 +196,13 @@ nlu:
     - After [fifteen]{"entity":"duration", "value":"15"} [mins](time_unit)
     - After [forty five]{"entity":"duration", "value":"45"} [minutes](time_unit)
     - After [thirty]{"entity":"duration", "value":"30"} [minutes](time_unit)
+
+- intent: edit_cleaning_room
+  examples: |
+    - edit the cleaning scheduele with reservation ID [AA54367](reservation_id)
+    - modify the cleaning schedule with reservation ID [AA54367](reservation_id)
+    - edit the cleaning scheduele with cleaning ID [CC54367](cleaning_id)
+    - modify the cleaning schedule with cleaning ID [CC54367](cleaning_id)
 
 - intent: faq_check_in_time
   examples: | 
