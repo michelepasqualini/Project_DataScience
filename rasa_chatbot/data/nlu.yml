@@ -305,7 +305,14 @@ nlu:
     - till when [restaurant](location) remain open?
     - till what time will the [restaurant](location) remain open?
     - can you share the timings of [restaurant](location)?
-  
+
+- intent: show_rooms
+  examples: |
+    - show all rooms of the hotel
+    - Can you show all rooms of the hotel?
+    - show all type of rooms
+    - show rooms
+
 - intent: add_reservation
   examples: |
     - confirm

@@ -12,6 +12,10 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: show room
+  steps: 
+  - intent: show_rooms
+  - action: utter_show_rooms
 
 #BOOKING ROOM
 - story: booking path

@@ -146,7 +146,6 @@ slots:
 
 
 
-
 responses:
 
   utter_greet:
@@ -168,6 +167,8 @@ responses:
       - Book a room -> (e.g.: i want to book a room)
       #####
       - Show reservation -> (e.g.: show reservation with ID <<AA12345>>)
+      #####
+      - Show rooms -> (e.g.: show all rooms of the hotel)
       #####
       - Modify reservation -> (e.g.: edit reservation with ID <<AA12345>>)
       #####
@@ -241,6 +242,10 @@ responses:
   - text: 'Suite room: '
     image: https://www.mhotel.in/img/super/01.jpg
     
+  utter_show_rooms:
+  - text: 'Our rooms: '
+   
+
   utter_happy:
   - text: "Great, carry on!"
 
