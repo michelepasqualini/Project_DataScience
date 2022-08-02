@@ -58,7 +58,7 @@ nlu:
 
 - intent: book_room
   examples: |
-    - i want a book a [room](location) for my stay
+    - i want to book a [room](location) for my stay
     - I want to book a [room](location)
     - i want to book a [room](location)
     - i would like to book a [room](location)
@@ -87,6 +87,7 @@ nlu:
     - see reservation [AA23658](reservation_id)
     - see reservation
     - show reservation
+    - show my reservation
     - see
     - show
 
@@ -98,6 +99,8 @@ nlu:
     - modify reservation [AA23658](reservation_id)
     - edit reservation
     - modify reservation
+    - edit my reservation
+    - modify my reservation
     - edit
     - modify
     
@@ -162,7 +165,7 @@ nlu:
 - intent: see_cleaning_schedule
   examples: |
     - Cleaning schedule with ID [CC54367](cleaning_id)
-    - Cleaning schedule with ID [AA54367](reservation_id)
+    - Cleaning schedule with reservation ID [AA54367](reservation_id)
     - Cleaning schedule with reservation ID [AA54367](reservation_id)
     - See cleaning schedule with ID [CC54367](cleaning_id)
     - See cleaning schedule with reservation ID [AA54367](reservation_id)
@@ -173,7 +176,6 @@ nlu:
     - See cleaning schedule with ID [CC54367](cleaning_id) for my room
     - See cleaning schedule with reservation ID [AA54367](reservation_id) for my room
  
-
 - intent: cleaning_time
   examples: |
     - Could you send someone in [2](duration) [hours](time_unit)?
@@ -199,9 +201,9 @@ nlu:
 
 - intent: edit_cleaning_room
   examples: |
-    - edit the cleaning scheduele with reservation ID [AA54367](reservation_id)
+    - Do you want to edit the cleaning schedule with reservation ID [AA54367](reservation_id)?
     - modify the cleaning schedule with reservation ID [AA54367](reservation_id)
-    - edit the cleaning scheduele with cleaning ID [CC54367](cleaning_id)
+    - Do you want to edit the cleaning schedule with cleaning ID [CC54367](cleaning_id)?
     - modify the cleaning schedule with cleaning ID [CC54367](cleaning_id)
 
 - intent: faq_check_in_time
@@ -210,9 +212,7 @@ nlu:
     - check in timings?
     - check in time
     - what is the check-in time?
-    - what is the check in time?
     - can you tell me your check-in timings?
-    - can you tell me your check in timings?
     - i would like to know your check-in timings
     - tell your check-in timings
     - when can I check in?
@@ -226,31 +226,22 @@ nlu:
     - what are your check-out timings?
     - check out timings?
     - check out time
-    - what is the check-in time?
-    - what is the check in time?
-    - can you tell me your check-out timings?
+    - what is the check-out time?
     - can you tell me your check out timings?
     - i would like to know your check-out timings
     - tell your check-out timings
     - when can I check out?
     - check-out?
     - could you tell me when to check-out?
-    - when check in?
+    - when check out?
     - i want to check out. can you tell me check out timings?
 
 - intent: faq_cancel_reservation
   examples: | 
-    - i want to cancel the reservation that i made 
-    - cancel my reservation that i made earlier 
-    - i would like to cancel my reservation
-    - cancel my reservation
     - can you cancel my reservation?
     - how do i cancel my reservation?
     - can i cancel my reservation?
-    - please cancel my reservation
-    - i request you to cancel the reservation that i made
-    - it would be great if you could cancel my reservation
-
+    
 - intent: faq_cancellation_policy
   examples: | 
     - what is your cancellation policy?
@@ -326,6 +317,27 @@ nlu:
     - Save order
     - save
 
+- intent: start
+  examples: |
+    - start
+    - open
+    - begin
+    - init
+
+- intent: stop
+  examples: |
+    - quit
+    - close
+    - stop
+
+- intent: help
+  examples: |
+    - What can i do?
+    - Help
+    - help
+    - please help
+    - What are the functions?
+    - I need your help
 
 
 

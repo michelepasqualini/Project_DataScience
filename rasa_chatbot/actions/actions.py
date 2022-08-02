@@ -363,16 +363,17 @@ class ActionCheckCleaningRoom(Action):
             cleaning_index = index[condition]
         elif (len(cleaning_index) == 0 and cleaning_id != "None"):
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
-            return [[SlotSet("error", True)]]
+            return [SlotSet("error", True)]
 
         # get index of the row with specified order ID
         if len(cleaning_index) == 0:
             # reservation not found
             # send message to the user
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
-            return [[SlotSet("error", True)]]
+            return [SlotSet("error", True)]
         
-        return [[SlotSet("error", False)]]
+        return [SlotSet("error", False)]
+    
 
 class ActionEditCleaningRoom(Action):
 

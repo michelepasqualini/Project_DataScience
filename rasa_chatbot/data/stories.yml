@@ -67,25 +67,30 @@ stories:
   - action: action_edit_reservation
 
 #EDIT CLEANING ROOM - wrong
-- story: edit cleaning room path
-  steps:
-  - intent: edit_cleaning_room
-  - action: action_check_cleaning_room
-  - slot_was_set:
-    - error: true 
-    
+#- story: edit cleaning room path
+#  steps:
+#  - intent: edit_cleaning_room
+#  - action: action_check_cleaning_room
+#  - slot_was_set:
+#    - error: true 
+#  - action: utter_no_cleaning_scheduled
+#    
+#  
+##EDIT CLEANING ROOM - right
+#- story: edit cleaning room path
+#  steps:
+#  - intent: edit_cleaning_room
+#  - action: action_check_cleaning_room 
+#  - slot_was_set:
+#    - error: false
+#  - action: form_edit_cleaning_room
+#  - active_loop: form_edit_cleaning_room
+#  - slot_was_set:
+#    - requested_slot: null 
+#  - active_loop: null
+#  - action: action_edit_cleaning_room
+
+
   
-#EDIT CLEANING ROOM - right
-- story: edit cleaning room path
-  steps:
-  - intent: edit_cleaning_room
-  - action: action_check_cleaning_room 
-  - slot_was_set:
-    - error: false
-  - action: form_edit_cleaning_room
-  - active_loop: form_edit_cleaning_room
-  - slot_was_set:
-    - requested_slot: null 
-  - active_loop: null
-  - action: action_edit_cleaning_room
+
   

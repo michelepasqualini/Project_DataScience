@@ -9,6 +9,9 @@ session_config:
 intents:
   - greet
   - goodbye
+  - start
+  - stop
+  - help
   - affirm
   - deny
   - mood_great
@@ -62,9 +65,9 @@ slots:
     mappings:
     - type: from_entity
       entity: number
-      conditions:
-          - active_loop: form_book_room
-          - active_loop: form_edit_book_room
+#      conditions:
+#          - active_loop: form_book_room
+#          - active_loop: form_edit_book_room
 
   room_type:
     type: text
@@ -82,9 +85,9 @@ slots:
     mappings:
     - type: from_entity
       entity: days
-      conditions:
-          - active_loop: form_book_room
-          - active_loop: form_edit_book_room
+#      conditions:
+#          - active_loop: form_book_room
+#          - active_loop: form_edit_book_room
 
   hour:
     type: text
@@ -142,10 +145,7 @@ slots:
         entity: error
 
 
-  
 
-  
-      
 
 responses:
 
@@ -154,16 +154,62 @@ responses:
   - text: Hey! How can I help you?
   - text: Hey there! How can I help you, today?
 
+  utter_start:
+  - text: Welcome, I am HotelBot, from Milan hotel. I can help you create and manage your reservation.
+        For more help you can type "help".
+        
+  utter_end:
+  - text: Goodbye, friend!
+  
+  utter_help:
+  - text: |
+      You're welcome. Here is the list of things you can do by us:
+      #####
+      - Book a room -> (e.g.: i want to book a room)
+      #####
+      - Show reservation -> (e.g.: show reservation with ID <<AA12345>>)
+      #####
+      - Modify reservation -> (e.g.: edit reservation with ID <<AA12345>>)
+      #####
+      - Delete reservation -> (e.g.: delete reservation with ID <<AA12345>>)
+      #####
+      - Schedule cleaning room -> (e.g.: I want to have my room with ID <<AA54367>> cleaned)
+      #####
+      - Visualize cleaning schedule -> (e.g.: Cleaning schedule with ID <<CC54367>>)
+      #####
+      - Plan cleaning time -> (e.g.: Could you send someone in 2 hours?)
+      #####
+      - Edit cleaning schedule -> (e.g.: Modify the cleaning schedule with reservation ID <<AA54367>>)
+      #####
+      - FAQs check-in time -> (e.g.: what is the check-in time?)
+      #####
+      - FAQa check-out time -> (e.g.: what is the check-out time?)
+      #####
+      - FAQs cancel reservation -> (e.g.: how do i cancel my reservation?)
+      #####
+      - FAQs cancellation policy -> (e.g.: what is your cancellation policy?)
+      #####
+      - FAQs restaurant -> (e.g.: do you have a restaurant?)
+      #####
+      - FAQs breakfast -> (e.g: does the hotel offer breakfast?)
+      #####
+      - FAQs breakfast time -> (e.g: what is the time for breakfast?)
+      #####
+      - FAQs restaurant time -> (e.g: what is the time of the restaurant?)
+      #####
+      - Quit the application using command <</stop>>
+      #####
+
   utter_affirm:
   - text: 'Your room(s) have been booked. Number of {{room_type}} rooms booked : {{number}}'
 
   utter_ask_number:
-  - text: Select the number of rooms you want to book
-    buttons:
-    - title: '1'
-      payload: /num_rooms{{"number":"1"}}
-    - title: '2'
-      payload: /num_rooms{{"number":"2"}}
+  - text: How many rooms would you like to book?
+#    buttons:
+#    - title: '1'
+#      payload: /num_rooms{{"number":"1"}}
+#    - title: '2'
+#      payload: /num_rooms{{"number":"2"}}
       
   utter_ask_room_type:
   - text: Select from one of the room types
@@ -172,14 +218,16 @@ responses:
       payload: /type_rooms{{"room_type":"Simple"}}
     - title: Deluxe
       payload: /type_rooms{{"room_type":"Deluxe"}}
+    - title: Suite
+      payload: /type_rooms{{"room_type":"Suite"}}
 
   utter_ask_days:
   - text: Select the days of stayed
-    buttons:
-    - title: '1'
-      payload: /days_of_stay{{"days":"1"}}
-    - title: '2'
-      payload: /days_of_stay{{"days":"2"}}
+#    buttons:
+#    - title: '1'
+#      payload: /days_of_stay{{"days":"1"}}
+#    - title: '2'
+#      payload: /days_of_stay{{"days":"2"}}
 
   utter_simple_room_image:
   - text: 'Simple room: '
@@ -188,19 +236,16 @@ responses:
   utter_deluxe_room_image:
   - text: 'Deluxe room: '
     image: https://www.mhotel.in/img/super/01.jpg
+
+  utter_suite_room_image:
+  - text: 'Suite room: '
+    image: https://www.mhotel.in/img/super/01.jpg
     
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
   utter_happy:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Bye, see you soon "
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
@@ -212,38 +257,31 @@ responses:
   - text: We have no cleaning scheduled.    
     
   utter_check_in_time:
-  - text: Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact
+  - text: Check-in time starts at 4 PM. Minimum check-in age is 18. Please contact
       the reception for early check-in requests.
 
   utter_check_out_time:
-  - text: Check-out time is 11 AM. Please contact the reception for late checkout
+  - text: Check-out time is 10 AM. Please contact the reception for late checkout
       requests.
 
   utter_cancel_reservation:
-  - text: To cancel a reservation, select the “Reservations” link from the homepage.
-  - text: On the Reservations page, under the heading ‘View, Change or Cancel a Reservation,’enter
-      your confirmation number, and either the last name on the reservation or the
-      last four digits of the credit card used to make the reservation.
-
+  - text: To cancel a reservation, select the “Reservations” link from the homepage, or type "cancel reservation" on this chat.
+  
   utter_cancellation_policy:
-  - text: The booking deposit is refundable if the cancellation occurs at least 15
-      days before arrival. For cancellations made after this limit, a penalty will
-      be imposed based on the cancellation policy.
+  - text: The booking deposit is refundable if the cancellation occurs at least 7
+      days before arrival. For cancellations made after this limit, only 50% of the booking amount will be refunded.
 
   utter_have_restaurant:
-  - text: Yes, the hotel has a restaurant called the Zephyr Bar. With our menu we
-      strive to reflect the historic art and the spirit of our neighborhood by offering
-      a glimpse into what makes our area unique.
+  - text: Yes, the hotel has a restaurant called Milan bar. With our menu we want to offer Italian cuisine and Piedmontese specialties.
 
   utter_breakfast_avail:
-  - text: The hotel provides its guests with a free made-to-order breakfast each morning.
+  - text: The hotel provides its guests with a free buffet breakfast each morning.
 
   utter_breakfast_time:
-  - text: Monday through Friday breakfast is 6 am to 9 am. On Saturday and Sunday,
-      we are open from 7 am to 10:30 am.
+  - text: Breakfast is available every day from 6 am to 9 am.
 
   utter_restaurant_time:
-  - text: Our restaurant serves a dazzling 24-hour menu.
+  - text: Our restaurant is open for lunch from 12 pm to 2 pm and for dinner from 6 pm to 8 pm.
   
   utter_no_reservation:
   - text: We have no reservation yet. Would you like to book a room?
@@ -256,8 +294,6 @@ responses:
 
 actions: 
   - utter_greet
-  - utter_cheer_up
-  - utter_did_that_help
   - utter_happy
   - utter_goodbye
   - utter_iamabot
@@ -284,14 +320,17 @@ actions:
   - action_edit_cleaning_room
   - action_check_cleaning_room
   - utter_default
+  - utter_start
+  - utter_end
+  - utter_help
 
 
 forms: 
   form_book_room:
     required_slots:
     - room_type
-    - number
-    - days
+#    - number
+#    - days
 
   form_edit_book_room:
     required_slots:
