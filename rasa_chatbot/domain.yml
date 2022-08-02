@@ -38,6 +38,7 @@ intents:
   - faq_restaurant_time
   - add_reservation
   - show_reservation_id
+  - show_rooms
   - edit_reservation
   - delete_reservation
   - edit_cleaning_room
@@ -242,9 +243,18 @@ responses:
   - text: 'Suite room: '
     image: https://www.mhotel.in/img/super/01.jpg
     
-  utter_show_rooms:
-  - text: 'Our rooms: '
-   
+  utter_show_simple:
+  - text: 'Simple: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/simple.jpg
+
+  utter_show_deluxe:
+  - text: 'Deluxe: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/deluxe.jpg
+
+  utter_show_suite:
+  - text: 'Suite: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/suite.jpg
+    
 
   utter_happy:
   - text: "Great, carry on!"
@@ -328,6 +338,9 @@ actions:
   - utter_start
   - utter_end
   - utter_help
+  - utter_show_suite
+  - utter_show_simple
+  - utter_show_deluxe
 
 
 forms: 

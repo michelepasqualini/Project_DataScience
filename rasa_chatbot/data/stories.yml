@@ -15,7 +15,10 @@ stories:
 - story: show room
   steps: 
   - intent: show_rooms
-  - action: utter_show_rooms
+  - action: utter_show_simple
+  - action: utter_show_deluxe
+  - action: utter_show_suite
+
 
 #BOOKING ROOM
 - story: booking path
@@ -29,6 +32,20 @@ stories:
   - action: action_booking_room
   - intent: add_reservation
   - action: action_save_reservation
+
+#BOOKING ROOM - no confirm
+#- story: booking path
+#  steps:
+#  - intent: book_room
+#  - action: form_book_room
+#  - active_loop: form_book_room
+#  - slot_was_set:
+#    - requested_slot: null
+#  - active_loop: null
+#  - action: action_booking_room
+#  - intent: deny
+#  - action: to_do 
+################
 
 #CLEANING ROOM
 - story: cleaning path
