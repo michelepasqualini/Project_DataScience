@@ -312,6 +312,7 @@ nlu:
     - Can you show all rooms of the hotel?
     - show all type of rooms
     - show rooms
+    - show room
 
 - intent: add_reservation
   examples: |

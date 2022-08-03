@@ -66,9 +66,9 @@ slots:
     mappings:
     - type: from_entity
       entity: number
-#      conditions:
-#          - active_loop: form_book_room
-#          - active_loop: form_edit_book_room
+      conditions:
+          - active_loop: form_book_room
+          - active_loop: form_edit_book_room
 
   room_type:
     type: text
@@ -86,9 +86,9 @@ slots:
     mappings:
     - type: from_entity
       entity: days
-#      conditions:
-#          - active_loop: form_book_room
-#          - active_loop: form_edit_book_room
+      conditions:
+          - active_loop: form_book_room
+          - active_loop: form_edit_book_room
 
   hour:
     type: text
@@ -207,11 +207,11 @@ responses:
 
   utter_ask_number:
   - text: How many rooms would you like to book?
-#    buttons:
-#    - title: '1'
-#      payload: /num_rooms{{"number":"1"}}
-#    - title: '2'
-#      payload: /num_rooms{{"number":"2"}}
+    buttons:
+    - title: '1'
+      payload: /num_rooms{{"number":"1"}}
+    - title: '2'
+      payload: /num_rooms{{"number":"2"}}
       
   utter_ask_room_type:
   - text: Select from one of the room types
@@ -225,11 +225,11 @@ responses:
 
   utter_ask_days:
   - text: Select the days of stayed
-#    buttons:
-#    - title: '1'
-#      payload: /days_of_stay{{"days":"1"}}
-#    - title: '2'
-#      payload: /days_of_stay{{"days":"2"}}
+    buttons:
+    - title: '1'
+      payload: /days_of_stay{{"days":"1"}}
+    - title: '2'
+      payload: /days_of_stay{{"days":"2"}}
 
   utter_simple_room_image:
   - text: 'Simple room: '
@@ -255,7 +255,6 @@ responses:
   - text: 'Suite: '
     image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/suite.jpg
     
-
   utter_happy:
   - text: "Great, carry on!"
 
@@ -347,8 +346,8 @@ forms:
   form_book_room:
     required_slots:
     - room_type
-#    - number
-#    - days
+    - number
+    - days
 
   form_edit_book_room:
     required_slots:
