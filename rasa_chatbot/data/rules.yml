@@ -19,17 +19,23 @@ rules:
   - action: form_book_room
   - active_loop: form_book_room
 
-- rule: submit booking form
-  condition:
+#- rule: submit booking form
+#  condition:
   # Condition that form is active.
-  - active_loop: form_book_room
-  steps:
-  - action: form_book_room
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
+#  - active_loop: form_book_room
+#  steps:
+#  - action: form_book_room
+#  - active_loop: null
+#  - slot_was_set:
+#    - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_booking_room
+  #- action: utter_ask_number
+  #- intent: get_number
+  #- action: action_set_number_rooms
+  #- action: utter_ask_days
+  #- intent: get_number
+  #- action: action_set_days
+  #- action: action_booking_room
 
 #CLEANING ROOM
 - rule: activating the cleaning form

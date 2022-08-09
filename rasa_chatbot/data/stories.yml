@@ -29,6 +29,12 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: utter_ask_number
+  - intent: get_number_rooms
+  - action: action_set_number_rooms
+  - action: utter_ask_days
+  - intent: get_number_days
+  - action: action_set_days  
   - action: action_booking_room
   - intent: add_reservation
   - action: action_save_reservation

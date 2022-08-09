@@ -1,0 +1,14 @@
+[
+  {
+    "name": "cleaning_id",
+    "pattern": "CC\\d{5}"
+  },
+  {
+    "name": "number",
+    "pattern": "\\d{1,2}"
+  },
+  {
+    "name": "reservation_id",
+    "pattern": "AA\\d{5}"
+  }
+]

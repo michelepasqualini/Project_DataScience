@@ -19,9 +19,9 @@ intents:
   - bot_challenge
   - geo-curiosity
   - book_room
-  - num_rooms
+  #- num_rooms
   - type_rooms
-  - days_of_stay
+  #- days_of_stay
   - book_number_room
   - schedule_room_cleaning
   - see_cleaning_schedule
@@ -42,6 +42,9 @@ intents:
   - edit_reservation
   - delete_reservation
   - edit_cleaning_room
+  - get_number_days
+  - get_number_rooms
+
 
 entities:
   - country
@@ -207,11 +210,11 @@ responses:
 
   utter_ask_number:
   - text: How many rooms would you like to book?
-    buttons:
-    - title: '1'
-      payload: /num_rooms{{"number":"1"}}
-    - title: '2'
-      payload: /num_rooms{{"number":"2"}}
+    #buttons:
+    #- title: '1'
+    #  payload: /num_rooms{{"number":"1"}}
+    #- title: '2'
+    #  payload: /num_rooms{{"number":"2"}}
       
   utter_ask_room_type:
   - text: Select from one of the room types
@@ -225,11 +228,11 @@ responses:
 
   utter_ask_days:
   - text: Select the days of stayed
-    buttons:
-    - title: '1'
-      payload: /days_of_stay{{"days":"1"}}
-    - title: '2'
-      payload: /days_of_stay{{"days":"2"}}
+    #buttons:
+    #- title: '1'
+    #  payload: /days_of_stay{{"days":"1"}}
+    #- title: '2'
+    #  payload: /days_of_stay{{"days":"2"}}
 
   utter_simple_room_image:
   - text: 'Simple room: '
@@ -306,6 +309,8 @@ responses:
   utter_default:
   - text: Sorry I didn't get that. Can you rephrase?
 
+
+
 actions: 
   - utter_greet
   - utter_happy
@@ -340,14 +345,15 @@ actions:
   - utter_show_suite
   - utter_show_simple
   - utter_show_deluxe
-
+  - action_set_days
+  - action_set_number_rooms
 
 forms: 
   form_book_room:
     required_slots:
     - room_type
-    - number
-    - days
+#    - number
+#    - days
 
   form_edit_book_room:
     required_slots:

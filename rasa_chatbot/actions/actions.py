@@ -459,3 +459,28 @@ class ActionEditCleaningRoom(Action):
         return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
 
 
+class ActionSetNumberRooms(Action):
+
+    def name(self) -> Text:
+        return 'action_set_number_rooms'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        number = str(tracker.get_slot('number'))
+        return [SlotSet("number", number)]
+
+
+class ActionSetDays(Action):
+    
+    def name(self) -> Text:
+        return 'action_set_days'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        days = str(tracker.get_slot('number'))
+        
+        return [SlotSet("days", days)]

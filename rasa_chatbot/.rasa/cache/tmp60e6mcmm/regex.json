@@ -1,6 +1,0 @@
-[
-  {
-    "name": "reservation_id",
-    "pattern": "AA\\d{5}"
-  }
-]
