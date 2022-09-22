@@ -103,7 +103,7 @@ nlu:
     - modify my reservation
     - edit
     - modify
-    
+
 
 - intent: delete_reservation
   examples: |
@@ -113,10 +113,10 @@ nlu:
     - remove reservation [AA23658](reservation_id)
     - cancel reservation with ID [AA54367](reservation_id)
     - cancel reservation [AA23658](reservation_id)
-    - delete reservation 
+    - delete reservation
     - cancel reservation
     - remove reservation
-    - remove 
+    - remove
     - delete
     - cancel
 
@@ -131,23 +131,38 @@ nlu:
     - book [2](number) [rooms](location)
     - need [2](number) [rooms](location) to book
 
-#- intent: num_rooms
-#  examples: |
-#    - [2](number)
-#    - [1](number)
+- intent: num_rooms
+  examples: |
+    - [2](number)
+    - [1](number)
 
 - intent: type_rooms
   examples: |
     - [Simple](room_type)
     - [Deluxe](room_type)
-    - [Suite](room_type)
 
-#- intent: days_of_stay
-#  examples: |
-#    - [1](days)
-#    - [2](days)
-#    - [one](days)
-#    - [two](days)
+- intent: days_of_stay
+  examples: |
+    - [1](days)
+    - [2](days)
+    - [one](days)
+    - [two](days)
+
+- intent: get_number_rooms
+  examples: |
+    - [1](number) rooms
+    - [2](number) rooms
+    - [3](number) rooms
+    - [4](number) rooms
+    - [5](number) rooms
+
+- intent: get_number_days
+  examples: |
+    - [1](days) days
+    - [2](days) days
+    - [3](days) days
+    - [4](days) days
+    - [5](days) days
 
 - intent: schedule_room_cleaning
   examples: |
@@ -159,10 +174,10 @@ nlu:
     - Can you get my room with ID [AA54367](reservation_id) cleaned?
     - Will you get my room cleaned?
     - Will you clean my room?
-    - I want my room with ID [AA54367](reservation_id) to be neat and clean 
+    - I want my room with ID [AA54367](reservation_id) to be neat and clean
     - Clean my room with ID [AA54367](reservation_id)
     - clean my room
-    
+
 - intent: see_cleaning_schedule
   examples: |
     - Cleaning schedule with ID [CC54367](cleaning_id)
@@ -176,7 +191,7 @@ nlu:
     - Cleaning schedule with reservation ID [AA54367](reservation_id) for my room
     - See cleaning schedule with ID [CC54367](cleaning_id) for my room
     - See cleaning schedule with reservation ID [AA54367](reservation_id) for my room
- 
+
 - intent: cleaning_time
   examples: |
     - Could you send someone in [2](duration) [hours](time_unit)?
@@ -208,7 +223,7 @@ nlu:
     - modify the cleaning schedule with cleaning ID [CC54367](cleaning_id)
 
 - intent: faq_check_in_time
-  examples: | 
+  examples: |
     - what are your check-in timings?
     - check in timings?
     - check in time
@@ -223,7 +238,7 @@ nlu:
     - i want to check in. can you tell me check in timing?
 
 - intent: faq_check_out_time
-  examples: | 
+  examples: |
     - what are your check-out timings?
     - check out timings?
     - check out time
@@ -238,13 +253,13 @@ nlu:
     - i want to check out. can you tell me check out timings?
 
 - intent: faq_cancel_reservation
-  examples: | 
+  examples: |
     - can you cancel my reservation?
     - how do i cancel my reservation?
     - can i cancel my reservation?
-    
+
 - intent: faq_cancellation_policy
-  examples: | 
+  examples: |
     - what is your cancellation policy?
     - can you state your cancellation policy
     - i would like to know your cancellation policy
@@ -254,7 +269,7 @@ nlu:
     - where is your cancellation policy?
 
 - intent: faq_have_restaurant
-  examples: | 
+  examples: |
     - does the hotel have a [restaurant](location)?
     - do you have a [restaurant](location)?
     - is there a [restaurant](location)?
@@ -267,9 +282,9 @@ nlu:
     - i heard there is a [restaurant](location) also
     - inform me about the [restaurant](location)
     - where is [restaurant](location)?
-  
+
 - intent: faq_breakfast_avail
-  examples: | 
+  examples: |
     - does the hotel offer breakfast?
     - is there breakfast offered by the hotel?
     - is breakfast facility available?
@@ -281,7 +296,7 @@ nlu:
     - is breakfast available?
 
 - intent: faq_breakfast_time
-  examples: | 
+  examples: |
     - what is the time for breakfast?
     - time for doing breakfast?
     - what are the breakfast timings?
@@ -296,7 +311,7 @@ nlu:
     - what is the timing for breakfast?
 
 - intent: faq_restaurant_time
-  examples: | 
+  examples: |
     - what are timings of your [restaurant](location)?
     - what is the time of the [restaurant](location)?
     - timings of [restaurant](location)
@@ -306,16 +321,6 @@ nlu:
     - till when [restaurant](location) remain open?
     - till what time will the [restaurant](location) remain open?
     - can you share the timings of [restaurant](location)?
-
-- intent: get_number_rooms
-  examples: |
-    - [2](number) rooms
-    - [8](number)
-
-- intent: get_number_days
-  examples: |
-    - [1](number) days
-    - [8](number)
 
 - intent: show_rooms
   examples: |
@@ -370,9 +375,6 @@ nlu:
   examples: |
     - CC\d{5}
 
-- regex: number
-  examples: |
-    - \d{1}
 
 
 
@@ -401,16 +403,16 @@ nlu:
     - restaurants
     - Restaurants
     - resturant
-    - restaurante 
+    - restaurante
     - resteraunt
     - Resturant
-    - Restaurante 
+    - Restaurante
     - Resteraunt
     - resturants
     - restaurantes
     - resteraunts
     - Resturants
-    - Restaurantes 
+    - Restaurantes
     - Resteraunts
 
 - synonym: "Simple"

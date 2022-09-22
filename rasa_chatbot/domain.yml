@@ -19,9 +19,9 @@ intents:
   - bot_challenge
   - geo-curiosity
   - book_room
-  #- num_rooms
+  - num_rooms
   - type_rooms
-  #- days_of_stay
+  - days_of_stay
   - book_number_room
   - schedule_room_cleaning
   - see_cleaning_schedule
@@ -42,9 +42,8 @@ intents:
   - edit_reservation
   - delete_reservation
   - edit_cleaning_room
-  - get_number_days
   - get_number_rooms
-
+  - get_number_days
 
 entities:
   - country
@@ -60,18 +59,19 @@ entities:
   - reservation_id
   - cleaning_id
   - error
+  - approval
 
 slots:
 
-  number: 
+  number:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: number
-      conditions:
-          - active_loop: form_book_room
-          - active_loop: form_edit_book_room
+      #conditions:
+          #- active_loop: form_book_room
+          #- active_loop: form_edit_book_room
 
   room_type:
     type: text
@@ -83,15 +83,22 @@ slots:
           - active_loop: form_book_room
           - active_loop: form_edit_book_room
 
-  days: 
+  days:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: days
-      conditions:
-          - active_loop: form_book_room
-          - active_loop: form_edit_book_room
+      #conditions:
+          #- active_loop: form_book_room
+          #- active_loop: form_edit_book_room
+
+  approval:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: approval
 
   hour:
     type: text
@@ -110,7 +117,7 @@ slots:
     mappings:
       - type: from_entity
         entity: suff
-  
+
   duration:
     type: text
     mappings:
@@ -160,10 +167,10 @@ responses:
   utter_start:
   - text: Welcome, I am HotelBot, from Milan hotel. I can help you create and manage your reservation.
         For more help you can type "help".
-        
+
   utter_end:
   - text: Goodbye, friend!
-  
+
   utter_help:
   - text: |
       You're welcome. Here is the list of things you can do by us:
@@ -204,6 +211,14 @@ responses:
       #####
       - Quit the application using command <</stop>>
       #####
+  
+  utter_ask_approval:   
+  - text: 'Would you like to approve your request ?'     
+    buttons:     
+    - title: "approve"       
+      payload: '/inform{"approval":"yes"}'     
+    - title: "deny"       
+      payload: '/inform{"approval":"no"}'
 
   utter_affirm:
   - text: 'Your room(s) have been booked. Number of {{room_type}} rooms booked : {{number}}'
@@ -215,7 +230,7 @@ responses:
     #  payload: /num_rooms{{"number":"1"}}
     #- title: '2'
     #  payload: /num_rooms{{"number":"2"}}
-      
+
   utter_ask_room_type:
   - text: Select from one of the room types
     buttons:
@@ -228,16 +243,16 @@ responses:
 
   utter_ask_days:
   - text: Select the days of stayed
-    #buttons:
-    #- title: '1'
-    #  payload: /days_of_stay{{"days":"1"}}
-    #- title: '2'
-    #  payload: /days_of_stay{{"days":"2"}}
+  #  buttons:
+  #  - title: '1'
+  #    payload: /days_of_stay{{"days":"1"}}
+  #  - title: '2'
+  #    payload: /days_of_stay{{"days":"2"}}
 
   utter_simple_room_image:
   - text: 'Simple room: '
     image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
-    
+
   utter_deluxe_room_image:
   - text: 'Deluxe room: '
     image: https://www.mhotel.in/img/super/01.jpg
@@ -245,7 +260,7 @@ responses:
   utter_suite_room_image:
   - text: 'Suite room: '
     image: https://www.mhotel.in/img/super/01.jpg
-    
+
   utter_show_simple:
   - text: 'Simple: '
     image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/simple.jpg
@@ -257,7 +272,7 @@ responses:
   utter_show_suite:
   - text: 'Suite: '
     image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/suite.jpg
-    
+
   utter_happy:
   - text: "Great, carry on!"
 
@@ -271,8 +286,8 @@ responses:
     - text: When should i arrange for cleaning?
 
   utter_no_cleaning_scheduled:
-  - text: We have no cleaning scheduled.    
-    
+  - text: We have no cleaning scheduled.
+
   utter_check_in_time:
   - text: Check-in time starts at 4 PM. Minimum check-in age is 18. Please contact
       the reception for early check-in requests.
@@ -283,7 +298,7 @@ responses:
 
   utter_cancel_reservation:
   - text: To cancel a reservation, select the “Reservations” link from the homepage, or type "cancel reservation" on this chat.
-  
+
   utter_cancellation_policy:
   - text: The booking deposit is refundable if the cancellation occurs at least 7
       days before arrival. For cancellations made after this limit, only 50% of the booking amount will be refunded.
@@ -299,19 +314,17 @@ responses:
 
   utter_restaurant_time:
   - text: Our restaurant is open for lunch from 12 pm to 2 pm and for dinner from 6 pm to 8 pm.
-  
+
   utter_no_reservation:
   - text: We have no reservation yet. Would you like to book a room?
     buttons:
       - title: Book a room
         payload: /book_room
-  
+
   utter_default:
   - text: Sorry I didn't get that. Can you rephrase?
 
-
-
-actions: 
+actions:
   - utter_greet
   - utter_happy
   - utter_goodbye
@@ -345,15 +358,17 @@ actions:
   - utter_show_suite
   - utter_show_simple
   - utter_show_deluxe
-  - action_set_days
   - action_set_number_rooms
+  - action_set_days
+  - utter_ask_approval
 
-forms: 
+
+forms:
   form_book_room:
     required_slots:
     - room_type
-#    - number
-#    - days
+    #- number
+    #- days
 
   form_edit_book_room:
     required_slots:
@@ -364,7 +379,7 @@ forms:
   form_cleaning:
     required_slots:
     - duration
-  
+
   form_edit_cleaning_room:
     required_slots:
     - duration

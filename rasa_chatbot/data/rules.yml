@@ -13,29 +13,23 @@ rules:
   - action: utter_iamabot
 
 #BOOKING ROOM
-- rule: activating the booking form
-  steps:
-  - intent: book_room
-  - action: form_book_room
-  - active_loop: form_book_room
+#- rule: activating the booking form
+#  steps:
+#  - intent: book_room
+#  - action: form_book_room
+  #- active_loop: form_book_room
 
 #- rule: submit booking form
 #  condition:
-  # Condition that form is active.
+#  # Condition that form is active.
 #  - active_loop: form_book_room
 #  steps:
 #  - action: form_book_room
 #  - active_loop: null
 #  - slot_was_set:
 #    - requested_slot: null
-  # The actions we want to run when the form is submitted.
-  #- action: utter_ask_number
-  #- intent: get_number
-  #- action: action_set_number_rooms
-  #- action: utter_ask_days
-  #- intent: get_number
-  #- action: action_set_days
-  #- action: action_booking_room
+#  # The actions we want to run when the form is submitted.
+#  - action: utter_ask_number
 
 #CLEANING ROOM
 - rule: activating the cleaning form
@@ -77,7 +71,7 @@ rules:
 #  - intent: edit_cleaning_room
 #  - action: action_check_cleaning_room
 #  - slot_was_set:
-#    - error: false  
+#    - error: false
 #  - action: form_edit_cleaning_room
 #  - active_loop: form_edit_cleaning_room
 #
@@ -88,7 +82,7 @@ rules:
 #  - slot_was_set:
 #    - error: true
 #  - action: utter_no_cleaning_scheduled
-#  
+#
 #- rule: submit edit cleaning room form
 #  condition:
 #  - active_loop: form_edit_cleaning_room
@@ -98,7 +92,7 @@ rules:
 #  - slot_was_set:
 #    - requested_slot: null
 #  - action: action_edit_cleaning_room
-  
+
 #FAQ
 - rule: faq ask check in time
   steps:
@@ -157,4 +151,3 @@ rules:
   steps:
   - intent: help
   - action: utter_help
-

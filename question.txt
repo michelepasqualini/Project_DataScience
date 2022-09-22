@@ -1,0 +1,17 @@
+come modificare slot con valori forniti da utente su un form? Nel
+caso del numero di stanze prenotabili e numero di giorni di soggirono.
+
+confirm o annulla sulla prenotazione della stanza?
+
+immagini quando l'utente sta prenotando 
+
+standard wenhook
+
+Codice:
+- test stories
+- fix slots
+- integrazione telegram
+- testing bot
+
+
+1) quando alla richiesta di confermare si risponde di no, come si fa nelle story?

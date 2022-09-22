@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "form_edit_book_room",
+    "form_cleaning"
+  ]
+}

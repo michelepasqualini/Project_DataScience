@@ -32,10 +32,10 @@ def random_with_N_digits(n):
 
 #action per prenotare una stanza
 class ActionBookRoom(Action):
-    
+
     def name(self) -> Text:
         return "action_booking_room"
-    
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -45,28 +45,28 @@ class ActionBookRoom(Action):
         days = tracker.get_slot("days")
 
         dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days. Do you want to confirm your reservation?')
-       
-        return []
-    
 
-#action per salvare una prenotazione       
-class ActionSaveReservation(Action): 
-    
+        return []
+
+
+#action per salvare una prenotazione
+class ActionSaveReservation(Action):
+
     def name(self) -> Text:
         return "action_save_reservation"
-    
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+
         number =str(tracker.get_slot("number"))
         room_type = str(tracker.get_slot("room_type"))
         days = str(tracker.get_slot("days"))
-        
+
         if ((number=="None") or (room_type=="None") or (days=="None")):
             dispatcher.utter_message(text=f'Error: firstly book a room!')
             return []
-        
+
         #create a random order ID
         reservation_id = f'AA{random_with_N_digits(5)}'
 
@@ -85,26 +85,26 @@ class ActionSaveReservation(Action):
         file.close()
         dispatcher.utter_message(text=f'Your reservation has been confirmed! The reservation ID is {reservation_id}.')
         # ripulire slot finita una storia
-                
+
         return [SlotSet("reservation_id",reservation_id), SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
-    
-    
-# action per visualizzate una prenotazione    
+
+
+# action per visualizzate una prenotazione
 class ActionSeeReservation(Action):
-    
+
     def name(self) -> Text:
         return "action_see_reservation"
-    
+
     def run(self, dispatcher : CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+
         reservation_id = str(tracker.get_slot('reservation_id'))
-       
+
         if(reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the reservation ID!')
             return []
-        
+
         df = pd.read_csv(reservations_filename)
 
         # get index of the row with specified order ID
@@ -121,11 +121,11 @@ class ActionSeeReservation(Action):
             room_type = df.loc[reservation_index[0], 'Room Type']
             days = df.loc[reservation_index[0], 'Days']
 
-            dispatcher.utter_message(text=f'The reservation {reservation_id} have booked {number} {room_type} rooms for {days} days.') 
+            dispatcher.utter_message(text=f'The reservation {reservation_id} have booked {number} {room_type} rooms for {days} days.')
 
-        return []  
+        return []
 
-        
+
 # action per modificare una prenotazione
 class ActionEditReservation(Action):
 
@@ -163,8 +163,8 @@ class ActionEditReservation(Action):
             # save the file
             df.to_csv(reservations_filename, index=False)
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been updated with success!')
-              
-        
+
+
         return [SlotSet("number"), SlotSet("room_type"), SlotSet("days")]
 
 # action per modificare una prenotazione
@@ -182,7 +182,7 @@ class ActionDeleteReservation(Action):
         if(reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the reservation ID!')
             return []
-        
+
 
         df = pd.read_csv(reservations_filename)
         df2 = pd.read_csv(clean_filename)
@@ -207,7 +207,7 @@ class ActionDeleteReservation(Action):
             df.to_csv(reservations_filename, index=False)
             df2.to_csv(clean_filename, index=False)
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
-        
+
         return [SlotSet("reservation_id"), SlotSet("cleaning_id")]
 
 
@@ -216,17 +216,17 @@ class ActionDeleteReservation(Action):
 ##########################################################################
 
 
-    
-# action per prenotare la pulizia della camera    
+
+# action per prenotare la pulizia della camera
 class ActionScheduleCleaning(Action):
-    
+
     def name(self) -> Text:
         return "action_schedule_cleaning"
-    
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+
         reservation_id = str(tracker.get_slot('reservation_id'))
 
         if(reservation_id == "None"):
@@ -235,7 +235,7 @@ class ActionScheduleCleaning(Action):
 
         duration = tracker.get_slot("duration")
         unit = tracker.get_slot("time_unit")
-        
+
         if duration is None:
             dispatcher.utter_message(text='Sure, i will send someone to your room right away.')
             return [SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
@@ -264,7 +264,7 @@ class ActionScheduleCleaning(Action):
         else:
             suff = 'AM'
         m = "%02d" % m
-       
+
         #create a random order ID
         cleaning_id = f'CC{random_with_N_digits(5)}'
 
@@ -282,31 +282,31 @@ class ActionScheduleCleaning(Action):
         writer.writerow([cleaning_id, reservation_id, h, m, suff])
         file.close()
 
-        dispatcher.utter_message(text=f'Sure, i have scheduled a cleaning for {h}:{m} {suff}.') 
+        dispatcher.utter_message(text=f'Sure, i have scheduled a cleaning for {h}:{m} {suff}.')
 
         return [SlotSet("cleaning_id", cleaning_id), SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
-  
 
 
 
-# action per visulizzare la prenotazione della pulizia della stanza    
+
+# action per visulizzare la prenotazione della pulizia della stanza
 class ActionSeeCleaningSchedule(Action):
-    
+
     def name(self) -> Text:
         return "action_see_cleaning_schedule"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-         
+
+
         cleaning_id = str(tracker.get_slot('cleaning_id'))
         reservation_id = str(tracker.get_slot('reservation_id'))
-       
+
         if(cleaning_id == "None" and reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
             return []
-        
+
         df = pd.read_csv(clean_filename)
 
         # get index of the row with specified order ID
@@ -320,10 +320,10 @@ class ActionSeeCleaningSchedule(Action):
         elif (len(cleaning_index) == 0 and cleaning_id != "None"):
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
             return []
-        
+
         if len(cleaning_index) == 0:
             # reservation not found
-            # send message to the user    
+            # send message to the user
 
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
         else:
@@ -334,8 +334,8 @@ class ActionSeeCleaningSchedule(Action):
 
             dispatcher.utter_message(text=f'We have scheduled a cleaning for {h}:{m} {suff}.')
 
-        return [SlotSet("cleaning_id"), SlotSet("reservation_id")]  
-    
+        return [SlotSet("cleaning_id"), SlotSet("reservation_id")]
+
 class ActionCheckCleaningRoom(Action):
     def name(self) -> Text:
         return 'action_check_cleaning_room'
@@ -345,7 +345,7 @@ class ActionCheckCleaningRoom(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cleaning_id = str(tracker.get_slot('cleaning_id'))
-        reservation_id = str(tracker.get_slot('reservation_id'))     
+        reservation_id = str(tracker.get_slot('reservation_id'))
 
         if(cleaning_id == "None" and reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
@@ -371,9 +371,9 @@ class ActionCheckCleaningRoom(Action):
             # send message to the user
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
             return [SlotSet("error", True)]
-        
+
         return [SlotSet("error", False)]
-    
+
 
 class ActionEditCleaningRoom(Action):
 
@@ -385,18 +385,18 @@ class ActionEditCleaningRoom(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cleaning_id = str(tracker.get_slot('cleaning_id'))
-        reservation_id = str(tracker.get_slot('reservation_id'))     
+        reservation_id = str(tracker.get_slot('reservation_id'))
 
         if(cleaning_id == "None" and reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the cleaning ID or reservation ID!')
             return []
-        
+
         df = pd.read_csv(clean_filename)
-      
+
 
         duration = tracker.get_slot("duration")
         unit = tracker.get_slot("time_unit")
-        
+
         if duration is None:
             dispatcher.utter_message(text='Sure, i will send someone to your room right away.')
             return [SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
@@ -425,7 +425,7 @@ class ActionEditCleaningRoom(Action):
         else:
             suff = 'AM'
         m = "%02d" % m
-       
+
         # get index of the row with specified order ID
         index = df.index
         condition = df['Cleaning ID'] == cleaning_id
@@ -444,7 +444,7 @@ class ActionEditCleaningRoom(Action):
             # send message to the user
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
 
-        else:           
+        else:
 
             # get details
             df.loc[cleaning_index[0], 'Hours'] = h
@@ -454,8 +454,8 @@ class ActionEditCleaningRoom(Action):
             # save the file
             df.to_csv(clean_filename, index=False)
             dispatcher.utter_message(text=f'The cleaning with the ID {cleaning_id} has been updated with success!')
-              
-        
+
+
         return [SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
 
 
@@ -469,11 +469,12 @@ class ActionSetNumberRooms(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         number = str(tracker.get_slot('number'))
+        #return []
         return [SlotSet("number", number)]
 
 
 class ActionSetDays(Action):
-    
+
     def name(self) -> Text:
         return 'action_set_days'
 
@@ -481,6 +482,6 @@ class ActionSetDays(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        days = str(tracker.get_slot('number'))
-        
+        days = str(tracker.get_slot('days'))
+        #return []
         return [SlotSet("days", days)]

@@ -8,12 +8,12 @@ stories:
   - action: utter_greet
 
 - story: goodbye path
-  steps: 
+  steps:
   - intent: goodbye
   - action: utter_goodbye
 
 - story: show room
-  steps: 
+  steps:
   - intent: show_rooms
   - action: utter_show_simple
   - action: utter_show_deluxe
@@ -34,13 +34,17 @@ stories:
   - action: action_set_number_rooms
   - action: utter_ask_days
   - intent: get_number_days
-  - action: action_set_days  
+  - action: action_set_days
   - action: action_booking_room
-  - intent: add_reservation
+  - action: utter_ask_approval
+  - slot_was_set:
+    - approval: yes
+  #- intent: add_reservation
   - action: action_save_reservation
 
-#BOOKING ROOM - no confirm
-#- story: booking path
+
+#BOOKING ROOM
+#- story: booking path negative
 #  steps:
 #  - intent: book_room
 #  - action: form_book_room
@@ -48,10 +52,17 @@ stories:
 #  - slot_was_set:
 #    - requested_slot: null
 #  - active_loop: null
+#  - action: utter_ask_number
+#  - intent: get_number_rooms
+#  - action: action_set_number_rooms
+#  - action: utter_ask_days
+#  - intent: get_number_days
+#  - action: action_set_days
 #  - action: action_booking_room
-#  - intent: deny
-#  - action: to_do 
-################
+#  #- action: utter_ask_approval
+#  #- slot_was_set:
+#  #  - approval: False
+#  - action: utter_no_reservation
 
 #CLEANING ROOM
 - story: cleaning path
@@ -89,7 +100,7 @@ stories:
   - action: form_edit_book_room
   - active_loop: form_edit_book_room
   - slot_was_set:
-    - requested_slot: null 
+    - requested_slot: null
   - active_loop: null
   - action: action_edit_reservation
 
@@ -99,25 +110,20 @@ stories:
 #  - intent: edit_cleaning_room
 #  - action: action_check_cleaning_room
 #  - slot_was_set:
-#    - error: true 
+#    - error: true
 #  - action: utter_no_cleaning_scheduled
-#    
-#  
+#
+#
 ##EDIT CLEANING ROOM - right
 #- story: edit cleaning room path
 #  steps:
 #  - intent: edit_cleaning_room
-#  - action: action_check_cleaning_room 
+#  - action: action_check_cleaning_room
 #  - slot_was_set:
 #    - error: false
 #  - action: form_edit_cleaning_room
 #  - active_loop: form_edit_cleaning_room
 #  - slot_was_set:
-#    - requested_slot: null 
+#    - requested_slot: null
 #  - active_loop: null
 #  - action: action_edit_cleaning_room
-
-
-  
-
-  
