@@ -1,0 +1,382 @@
+version: "3.1"
+
+config:
+    store_entities_as_slots: true
+session_config:
+    session_expiration_time: 60
+    carry_over_slots_to_new_session: true
+
+intents:
+  - greet
+  - goodbye
+  - start
+  - stop
+  - help
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - show_rooms
+  - book_room
+  - num_rooms
+  - type_rooms
+  - days_of_stay
+  - schedule_room_cleaning
+  - see_cleaning_schedule
+  - cleaning_time
+  - ask_breakfast
+  - ask_cancellation
+  - faq_check_in_time
+  - faq_check_out_time
+  - faq_cancel_reservation
+  - faq_cancellation_policy
+  - faq_have_restaurant
+  - faq_breakfast_avail
+  - faq_breakfast_time
+  - faq_restaurant_time
+  - add_reservation
+  - show_reservation_id
+  - edit_reservation
+  - delete_reservation
+  - edit_cleaning_room
+
+entities:
+  - country
+  - location
+  - room_type
+  - number
+  - hour
+  - minute
+  - suff
+  - duration
+  - time_unit
+  - days
+  - reservation_id
+  - cleaning_id
+  - error
+
+slots:
+
+  number: 
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: number
+      conditions:
+          - active_loop: form_book_room
+          - active_loop: form_edit_book_room
+
+  room_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: room_type
+      conditions:
+          - active_loop: form_book_room
+          - active_loop: form_edit_book_room
+
+  days: 
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: days
+      conditions:
+          - active_loop: form_book_room
+          - active_loop: form_edit_book_room
+
+  hour:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: hour
+
+  minute:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: minute
+
+  suff:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: suff
+  
+  duration:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: duration
+        conditions:
+          - active_loop: form_cleaning
+      - type: from_entity
+        entity: duration
+
+  time_unit:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time_unit
+
+  reservation_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: reservation_id
+
+  cleaning_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: cleaning_id
+
+  error:
+    type: bool
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: error
+
+
+  
+
+  
+      
+
+responses:
+
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: Hey! How can I help you?
+  - text: Hey there! How can I help you, today?
+
+  utter_start:
+  - text: Welcome, I am HotelBot, from Milan hotel. I can help you create and manage your reservation.
+        For more help you can type "help".
+
+  utter_end:
+  - text: Goodbye, friend!
+
+  utter_help:
+  - text: |
+      You're welcome. Here is the list of things you can do by us:
+      #####
+      - Book a room -> (e.g.: i want to book a room)
+      #####
+      - Show reservation -> (e.g.: show reservation with ID <<AA12345>>)
+      #####
+      - Modify reservation -> (e.g.: edit reservation with ID <<AA12345>>)
+      #####
+      - Delete reservation -> (e.g.: delete reservation with ID <<AA12345>>)
+      #####
+      - Schedule cleaning room -> (e.g.: I want to have my room with ID <<AA54367>> cleaned)
+      #####
+      - Visualize cleaning schedule -> (e.g.: Cleaning schedule with ID <<CC54367>>)
+      #####
+      - Plan cleaning time -> (e.g.: Could you send someone in 2 hours?)
+      #####
+      - Edit cleaning schedule -> (e.g.: Modify the cleaning schedule with reservation ID <<AA54367>>)
+      #####
+      - FAQs check-in time -> (e.g.: what is the check-in time?)
+      #####
+      - FAQa check-out time -> (e.g.: what is the check-out time?)
+      #####
+      - FAQs cancel reservation -> (e.g.: how do i cancel my reservation?)
+      #####
+      - FAQs cancellation policy -> (e.g.: what is your cancellation policy?)
+      #####
+      - FAQs restaurant -> (e.g.: do you have a restaurant?)
+      #####
+      - FAQs breakfast -> (e.g: does the hotel offer breakfast?)
+      #####
+      - FAQs breakfast time -> (e.g: what is the time for breakfast?)
+      #####
+      - FAQs restaurant time -> (e.g: what is the time of the restaurant?)
+      #####
+      - Quit the application using command <</stop>>
+      #####
+
+
+  utter_affirm:
+  - text: 'Your room(s) have been booked. Number of {{room_type}} rooms booked : {{number}}'
+
+  utter_ask_number:
+  - text: Select the number of rooms you want to book
+    buttons:
+    - title: '1'
+      payload: /num_rooms{{"number":"1"}}
+    - title: '2'
+      payload: /num_rooms{{"number":"2"}}
+    - title: '3'
+      payload: /num_rooms{{"number":"3"}}
+    - title: '4'
+      payload: /num_rooms{{"number":"4"}}
+    - title: '5'
+      payload: /num_rooms{{"number":"5"}}
+    - title: '6'
+      payload: /num_rooms{{"number":"6"}}
+      
+  utter_ask_room_type:
+  - text: Select from one of the room types
+    buttons:
+    - title: Simple
+      payload: /type_rooms{{"room_type":"Simple"}}
+    - title: Deluxe
+      payload: /type_rooms{{"room_type":"Deluxe"}}
+    - title: Suite
+      payload: /type_rooms{{"room_type":"Suite"}}
+
+  utter_ask_days:
+  - text: Select the days of stayed
+    buttons:
+    - title: '1'
+      payload: /days_of_stay{{"days":"1"}}
+    - title: '2'
+      payload: /days_of_stay{{"days":"2"}}
+    - title: '3'
+      payload: /days_of_stay{{"days":"3"}}
+    - title: '4'
+      payload: /days_of_stay{{"days":"4"}}
+    - title: '5'
+      payload: /days_of_stay{{"days":"5"}}
+    - title: '6'
+      payload: /days_of_stay{{"days":"6"}}
+    - title: '7'
+      payload: /days_of_stay{{"days":"7"}}
+    
+
+  utter_show_simple:
+  - text: 'Simple: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/simple.jpg
+
+  utter_show_deluxe:
+  - text: 'Deluxe: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/deluxe.jpg
+
+  utter_show_suite:
+  - text: 'Suite: '
+    image: https://raw.githubusercontent.com/michelepasqualini/Project_DataScience/main/rasa_chatbot/images/suite.jpg
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_duration:
+    - text: When should i arrange for cleaning?
+
+  utter_no_cleaning_scheduled:
+  - text: We have no cleaning scheduled.    
+    
+  utter_check_in_time:
+  - text: Check-in time starts at 4 PM. Minimum check-in age is 18. Please contact
+      the reception for early check-in requests.
+
+  utter_check_out_time:
+  - text: Check-out time is 10 AM. Please contact the reception for late checkout
+      requests.
+
+  utter_cancel_reservation:
+  - text: To cancel a reservation, select the “Reservations” link from the homepage, or type "cancel reservation" on this chat.
+
+  utter_cancellation_policy:
+  - text: The booking deposit is refundable if the cancellation occurs at least 7
+      days before arrival. For cancellations made after this limit, only 50% of the booking amount will be refunded.
+
+  utter_have_restaurant:
+  - text: Yes, the hotel has a restaurant called Milan bar. With our menu we want to offer Italian cuisine and Piedmontese specialties.
+
+  utter_breakfast_avail:
+  - text: The hotel provides its guests with a free buffet breakfast each morning.
+
+  utter_breakfast_time:
+  - text: Breakfast is available every day from 6 am to 9 am.
+
+  utter_restaurant_time:
+  - text: Our restaurant is open for lunch from 12 pm to 2 pm and for dinner from 6 pm to 8 pm.
+  
+  utter_no_reservation:
+  - text: We have no reservation yet. Would you like to book a room?
+    buttons:
+      - title: Book a room
+        payload: /book_room
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
+
+actions: 
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_help
+  - utter_goodbye
+  - utter_iamabot
+  - utter_show_simple
+  - utter_show_deluxe
+  - utter_show_suite
+  - action_booking_room
+  - utter_affirm
+  - utter_ask_number
+  - utter_ask_room_type
+  - utter_ask_days
+  - action_schedule_cleaning
+  - action_see_cleaning_schedule
+  - utter_check_in_time
+  - utter_check_out_time
+  - utter_cancel_reservation
+  - utter_cancellation_policy
+  - utter_have_restaurant
+  - utter_breakfast_avail
+  - utter_breakfast_time
+  - utter_restaurant_time
+  - utter_no_reservation
+  - action_save_reservation
+  - action_see_reservation
+  - action_edit_reservation
+  - action_delete_reservation
+  - action_edit_cleaning_room
+  - action_check_cleaning_room
+  - utter_default
+  - utter_start
+  - utter_end
+  
+
+
+forms: 
+  form_book_room:
+    required_slots:
+    - room_type
+    - number
+    - days
+
+  form_edit_book_room:
+    required_slots:
+    - room_type
+    - number
+    - days
+
+  form_cleaning:
+    required_slots:
+    - duration
+  
+  form_edit_cleaning_room:
+    required_slots:
+    - duration

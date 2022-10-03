@@ -1,0 +1,114 @@
+version: "3.1"
+
+stories:
+
+- story: welcome path
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: goodbye path
+  steps: 
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: show room
+  steps:
+  - intent: show_rooms
+  - action: utter_show_simple
+  - action: utter_show_deluxe
+  - action: utter_show_suite
+
+
+#BOOKING ROOM
+- story: booking path
+  steps:
+  - intent: book_room
+  - action: form_book_room
+  - active_loop: form_book_room
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_booking_room
+  - intent: add_reservation
+  - action: action_save_reservation
+
+#CLEANING ROOM
+- story: cleaning path
+  steps:
+  - intent: schedule_room_cleaning
+  - action: form_cleaning
+  - active_loop: form_cleaning
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_schedule_cleaning
+
+#SEE CLEANING
+- story: see cleaning schedule path
+  steps:
+  - intent: see_cleaning_schedule
+  - action: action_see_cleaning_schedule
+
+#SEE RESERVATION
+- story: see reservation path
+  steps:
+  - intent: show_reservation_id
+  - action: action_see_reservation
+
+#DELETE RESERVATION
+- story: delete reservation path
+  steps:
+  - intent: delete_reservation
+  - action: action_delete_reservation
+
+#EDIT BOOKING ROOM
+- story: edit booking room path
+  steps:
+  - intent: edit_reservation
+  - action: form_edit_book_room
+  - active_loop: form_edit_book_room
+  - slot_was_set:
+    - requested_slot: null 
+  - active_loop: null
+  - action: action_edit_reservation
+  
+#EDIT CLEANING ROOM - right
+- story: edit cleaning room path
+  steps:
+  - intent: edit_cleaning_room
+  - action: action_check_cleaning_room 
+  - action: form_edit_cleaning_room
+  - active_loop: form_edit_cleaning_room
+  - slot_was_set:
+    - requested_slot: null 
+  - active_loop: null
+  - action: action_edit_cleaning_room
+  
