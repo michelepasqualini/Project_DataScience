@@ -35,15 +35,12 @@ intents:
   - faq_breakfast_avail
   - faq_breakfast_time
   - faq_restaurant_time
-  - add_reservation
   - show_reservation_id
   - edit_reservation
   - delete_reservation
   - edit_cleaning_room
 
 entities:
-  #- country
-  #- location
   - room_type
   - number
   - hour
@@ -357,6 +354,7 @@ actions:
   - utter_default
   - utter_start
   - utter_end
+  - utter_no_cleaning_scheduled
   
 
 

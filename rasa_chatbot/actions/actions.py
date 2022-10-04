@@ -43,9 +43,9 @@ class ActionBookRoom(Action):
         number = tracker.get_slot("number")
         room_type = tracker.get_slot("room_type")
         days = tracker.get_slot("days")
+        
+        dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days.')
 
-        dispatcher.utter_message(text=f'You have chosen to book {number} {room_type} rooms for {days} days. Do you want to confirm your reservation?')
-       
         return []
     
 
@@ -114,7 +114,7 @@ class ActionSeeReservation(Action):
         if len(reservation_index) == 0:
             # reservation not found
             # send message to the user
-            dispatcher.utter_message(response='utter_no_reservations')
+            dispatcher.utter_message(response='utter_no_reservation')
         else:
             # get details
             number = df.loc[reservation_index[0], 'Number of rooms']
@@ -155,7 +155,7 @@ class ActionEditReservation(Action):
         if len(reservation_index) == 0:
             # reservation not found
             # send message to the user
-            dispatcher.utter_message(response='utter_no_reservations')
+            dispatcher.utter_message(response='utter_no_reservation')
         else:
             df.loc[reservation_index[0], 'Number of rooms'] = number
             df.loc[reservation_index[0], 'Room Type'] = room_type
@@ -198,7 +198,7 @@ class ActionDeleteReservation(Action):
         if len(reservation_index) == 0:
             # reservation not found
             # send message to the user
-            dispatcher.utter_message(response='utter_no_reservations')
+            dispatcher.utter_message(response='utter_no_reservation')
         else:
             df = df.drop(reservation_index[0])
             df2= df2.drop(cleaning_index)

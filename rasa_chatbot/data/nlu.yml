@@ -347,17 +347,6 @@ nlu:
     - till what time will the restaurant remain open?
     - can you share the timings of restaurant?
   
-- intent: add_reservation
-  examples: |
-    - confirm
-    - confirm order
-    - confirm reservation
-    - save my reservation
-    - Add order
-    - Save reservation
-    - Save order
-    - save
-
 
 - intent: start
   examples: |

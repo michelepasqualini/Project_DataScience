@@ -27,9 +27,6 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_booking_room
-  - user: |
-      confirm
-    intent: add_reservation
   - action: action_save_reservation
 
 #CLEANING ROOM
