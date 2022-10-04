@@ -178,7 +178,7 @@ responses:
       #####
       - Plan cleaning time -> (e.g.: Could you send someone in 2 hours?)
       #####
-      - Edit cleaning schedule -> (e.g.: Modify the cleaning schedule with reservation ID <<AA54367>>)
+      - Edit cleaning schedule -> (e.g.: I want to edit the cleaning schedule with reservation ID <<AA54367>>)
       #####
       - FAQs check-in time -> (e.g.: what is the check-in time?)
       #####
