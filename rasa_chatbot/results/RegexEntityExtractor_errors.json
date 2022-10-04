@@ -1,0 +1,1107 @@
+[
+  {
+    "text": "1 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "1",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "2 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "2",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "3 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "3",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "3",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "4 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "4",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "4",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "5 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "5",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "5",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "6 rooms",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "6",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9990279674530029,
+        "value": "6",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Simple",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "Simple",
+        "entity": "room_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "room_type",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.9964469075202942,
+        "value": "Simple",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Deluxe",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "Deluxe",
+        "entity": "room_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "room_type",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.9975428581237793,
+        "value": "Deluxe",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Suite",
+    "entities": [
+      {
+        "start": 0,
+        "end": 5,
+        "value": "Suite",
+        "entity": "room_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "room_type",
+        "start": 0,
+        "end": 5,
+        "confidence_entity": 0.9962345957756042,
+        "value": "Suite",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "1 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "1",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "2 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "2",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "3 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "3",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "3",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "4 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "4",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "4",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "5 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "5",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "5",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "6 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "6",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "6",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "7 days",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "7",
+        "entity": "days"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "days",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.9984362721443176,
+        "value": "7",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Could you send someone in 2 hours?",
+    "entities": [
+      {
+        "start": 26,
+        "end": 27,
+        "value": "2",
+        "entity": "duration"
+      },
+      {
+        "start": 28,
+        "end": 33,
+        "value": "hours",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 26,
+        "end": 27,
+        "confidence_entity": 0.9997010827064514,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 28,
+        "end": 33,
+        "confidence_entity": 0.9995242357254028,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Can you get it cleaned after 3 hours?",
+    "entities": [
+      {
+        "start": 29,
+        "end": 30,
+        "value": "3",
+        "entity": "duration"
+      },
+      {
+        "start": 31,
+        "end": 36,
+        "value": "hours",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 29,
+        "end": 30,
+        "confidence_entity": 0.9997746348381042,
+        "value": "3",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 31,
+        "end": 36,
+        "confidence_entity": 0.9995042085647583,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Can you get it cleaned after 1 hr?",
+    "entities": [
+      {
+        "start": 29,
+        "end": 30,
+        "value": "1",
+        "entity": "duration"
+      },
+      {
+        "start": 31,
+        "end": 33,
+        "value": "hr",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 29,
+        "end": 30,
+        "confidence_entity": 0.9997702240943909,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 31,
+        "end": 33,
+        "confidence_entity": 0.9994314312934875,
+        "value": "hr",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I want it to be cleaned after 30 minutes?",
+    "entities": [
+      {
+        "start": 30,
+        "end": 32,
+        "value": "30",
+        "entity": "duration"
+      },
+      {
+        "start": 33,
+        "end": 40,
+        "value": "minutes",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 30,
+        "end": 32,
+        "confidence_entity": 0.9997686743736267,
+        "value": "30",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 33,
+        "end": 40,
+        "confidence_entity": 0.9995796084403992,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Can you get it cleaned after 45 minutes?",
+    "entities": [
+      {
+        "start": 29,
+        "end": 31,
+        "value": "45",
+        "entity": "duration"
+      },
+      {
+        "start": 32,
+        "end": 39,
+        "value": "minutes",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 29,
+        "end": 31,
+        "confidence_entity": 0.9997896552085876,
+        "value": "45",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 32,
+        "end": 39,
+        "confidence_entity": 0.9995580315589905,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Can you get it cleaned after 15 min?",
+    "entities": [
+      {
+        "start": 29,
+        "end": 31,
+        "value": "15",
+        "entity": "duration"
+      },
+      {
+        "start": 32,
+        "end": 35,
+        "value": "min",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 29,
+        "end": 31,
+        "confidence_entity": 0.9997949004173279,
+        "value": "15",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 32,
+        "end": 35,
+        "confidence_entity": 0.9995779395103455,
+        "value": "min",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "can you get it cleaned in two hours",
+    "entities": [
+      {
+        "start": 26,
+        "end": 29,
+        "value": "2",
+        "entity": "duration"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "value": "hours",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 26,
+        "end": 29,
+        "confidence_entity": 0.9993298053741455,
+        "value": "2",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 30,
+        "end": 35,
+        "confidence_entity": 0.9993951320648193,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "In 2 hours",
+    "entities": [
+      {
+        "start": 3,
+        "end": 4,
+        "value": "2",
+        "entity": "duration"
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "value": "hours",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 4,
+        "confidence_entity": 0.9994874000549316,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 5,
+        "end": 10,
+        "confidence_entity": 0.9996073842048645,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After 30 minutes",
+    "entities": [
+      {
+        "start": 6,
+        "end": 8,
+        "value": "30",
+        "entity": "duration"
+      },
+      {
+        "start": 9,
+        "end": 16,
+        "value": "minutes",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 8,
+        "confidence_entity": 0.9995933175086975,
+        "value": "30",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 9,
+        "end": 16,
+        "confidence_entity": 0.9996102452278137,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After 10 min",
+    "entities": [
+      {
+        "start": 6,
+        "end": 8,
+        "value": "10",
+        "entity": "duration"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "value": "min",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 8,
+        "confidence_entity": 0.9995951056480408,
+        "value": "10",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 9,
+        "end": 12,
+        "confidence_entity": 0.999697208404541,
+        "value": "min",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "In 15 m",
+    "entities": [
+      {
+        "start": 3,
+        "end": 5,
+        "value": "15",
+        "entity": "duration"
+      },
+      {
+        "start": 6,
+        "end": 7,
+        "value": "m",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 5,
+        "confidence_entity": 0.9994444251060486,
+        "value": "15",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 6,
+        "end": 7,
+        "confidence_entity": 0.9996151924133301,
+        "value": "m",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "After 1 hour",
+    "entities": [
+      {
+        "start": 6,
+        "end": 7,
+        "value": "1",
+        "entity": "duration"
+      },
+      {
+        "start": 8,
+        "end": 12,
+        "value": "hour",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 7,
+        "confidence_entity": 0.9995669722557068,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 8,
+        "end": 12,
+        "confidence_entity": 0.9997108578681946,
+        "value": "hour",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "In 1 minute",
+    "entities": [
+      {
+        "start": 3,
+        "end": 4,
+        "value": "1",
+        "entity": "duration"
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "value": "minute",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 4,
+        "confidence_entity": 0.9995940327644348,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 5,
+        "end": 11,
+        "confidence_entity": 0.9995083808898926,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "In 5 s",
+    "entities": [
+      {
+        "start": 3,
+        "end": 4,
+        "value": "5",
+        "entity": "duration"
+      },
+      {
+        "start": 5,
+        "end": 6,
+        "value": "s",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 4,
+        "confidence_entity": 0.9994248151779175,
+        "value": "5",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time_unit",
+        "start": 5,
+        "end": 6,
+        "confidence_entity": 0.99967360496521,
+        "value": "s",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "In one h",
+    "entities": [
+      {
+        "start": 3,
+        "end": 6,
+        "value": "1",
+        "entity": "duration"
+      },
+      {
+        "start": 7,
+        "end": 8,
+        "value": "h",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 6,
+        "confidence_entity": 0.9995786547660828,
+        "value": "1",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 7,
+        "end": 8,
+        "confidence_entity": 0.9994439482688904,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After two hrs",
+    "entities": [
+      {
+        "start": 6,
+        "end": 9,
+        "value": "2",
+        "entity": "duration"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "value": "hrs",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 9,
+        "confidence_entity": 0.9995729327201843,
+        "value": "2",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 10,
+        "end": 13,
+        "confidence_entity": 0.9995785355567932,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "In three hours",
+    "entities": [
+      {
+        "start": 3,
+        "end": 8,
+        "value": "3",
+        "entity": "duration"
+      },
+      {
+        "start": 9,
+        "end": 14,
+        "value": "hours",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 3,
+        "end": 8,
+        "confidence_entity": 0.9995555281639099,
+        "value": "3",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 9,
+        "end": 14,
+        "confidence_entity": 0.9995447993278503,
+        "value": "hour",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After fifteen mins",
+    "entities": [
+      {
+        "start": 6,
+        "end": 13,
+        "value": "15",
+        "entity": "duration"
+      },
+      {
+        "start": 14,
+        "end": 18,
+        "value": "mins",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 13,
+        "confidence_entity": 0.999574601650238,
+        "value": "15",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 14,
+        "end": 18,
+        "confidence_entity": 0.9996904134750366,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After forty five minutes",
+    "entities": [
+      {
+        "start": 6,
+        "end": 16,
+        "value": "45",
+        "entity": "duration"
+      },
+      {
+        "start": 17,
+        "end": 24,
+        "value": "minutes",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 16,
+        "confidence_entity": 0.9917365908622742,
+        "value": "45",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 17,
+        "end": 24,
+        "confidence_entity": 0.9996945858001709,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "After thirty minutes",
+    "entities": [
+      {
+        "start": 6,
+        "end": 12,
+        "value": "30",
+        "entity": "duration"
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "value": "minutes",
+        "entity": "time_unit"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "duration",
+        "start": 6,
+        "end": 12,
+        "confidence_entity": 0.9988504648208618,
+        "value": "30",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time_unit",
+        "start": 13,
+        "end": 20,
+        "confidence_entity": 0.9996814727783203,
+        "value": "min",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

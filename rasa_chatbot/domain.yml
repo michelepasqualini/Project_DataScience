@@ -42,8 +42,8 @@ intents:
   - edit_cleaning_room
 
 entities:
-  - country
-  - location
+  #- country
+  #- location
   - room_type
   - number
   - hour

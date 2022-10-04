@@ -93,26 +93,26 @@ nlu:
 
 - intent: book_room
   examples: |
-    - i want a book a [room](location) for my stay
-    - I want to book a [room](location)
-    - i want to book a [room](location)
-    - i would like to book a [room](location)
-    - need a [room](location)
-    - can you book a [room](location)?
-    - book [room](location)
-    - book the [room](location)
-    - book a [room](location)
-    - Book a [Room](location)
-    - Book [room](location) for my stay
-    - book [rooms](location)
-    - book the [rooms](location)
-    - book [room](location)
-    - book the [room](location)
-    - book a [room](location)
-    - Book a [Room](location)
-    - Book [room](location)
-    - book [rooms](location)
-    - book the [rooms](location)
+    - i want a book a room for my stay
+    - I want to book a room
+    - i want to book a room
+    - i would like to book a room
+    - need a room
+    - can you book a room?
+    - book room
+    - book the room
+    - book a room
+    - Book a room
+    - Book room for my stay
+    - book rooms
+    - book the rooms
+    - book room
+    - book the room
+    - book a room
+    - Book a room
+    - Book room
+    - book rooms
+    - book the rooms
 
 - intent: show_reservation_id
   examples: |
@@ -161,12 +161,12 @@ nlu:
 
 - intent: num_rooms
   examples: |
-    - [1](number)
-    - [2](number)
-    - [3](number)
-    - [4](number)
-    - [5](number)
-    - [6](number)
+    - [1](number) rooms
+    - [2](number) rooms
+    - [3](number) rooms
+    - [4](number) rooms
+    - [5](number) rooms
+    - [6](number) rooms
 
 - intent: type_rooms
   examples: |
@@ -176,13 +176,13 @@ nlu:
 
 - intent: days_of_stay
   examples: |
-    - [1](days)
-    - [2](days)
-    - [3](days)
-    - [4](days)
-    - [5](days)
-    - [6](days)
-    - [7](days)
+    - [1](days) days
+    - [2](days) days
+    - [3](days) days
+    - [4](days) days
+    - [5](days) days
+    - [6](days) days
+    - [7](days) days
 
 - intent: schedule_room_cleaning
   examples: |
@@ -238,10 +238,10 @@ nlu:
 
 - intent: edit_cleaning_room
   examples: |
-    - Do you want to edit the cleaning schedule with reservation ID [AA54367](reservation_id)?
-    - modify the cleaning schedule with reservation ID [AA54367](reservation_id)
-    - Do you want to edit the cleaning schedule with cleaning ID [CC54367](cleaning_id)?
-    - modify the cleaning schedule with cleaning ID [CC54367](cleaning_id)
+    - I want to edit the cleaning schedule with reservation ID [AA54367](reservation_id)?
+    - I want to modify the cleaning schedule with reservation ID [AA54367](reservation_id)
+    - I want to edit the cleaning schedule with cleaning ID [CC54367](cleaning_id)?
+    - I want to modify the cleaning schedule with cleaning ID [CC54367](cleaning_id)
     
 - intent: faq_check_in_time
   examples: | 
@@ -265,8 +265,8 @@ nlu:
     - what are your check-out timings?
     - check out timings?
     - check out time
-    - what is the check-in time?
-    - what is the check in time?
+    - what is the check-out time?
+    - what is the check out time?
     - can you tell me your check-out timings?
     - can you tell me your check out timings?
     - i would like to know your check-out timings
@@ -274,7 +274,7 @@ nlu:
     - when can I check out?
     - check-out?
     - could you tell me when to check-out?
-    - when check in?
+    - when check out?
     - i want to check out. can you tell me check out timings?
 
 - intent: faq_cancel_reservation
@@ -295,18 +295,18 @@ nlu:
 
 - intent: faq_have_restaurant
   examples: | 
-    - does the hotel have a [restaurant](location)?
-    - do you have a [restaurant](location)?
-    - is there a [restaurant](location)?
-    - is there a [restaurant](location) in the hotel?
-    - tell me about the [restaurant](location)
-    - can you tell me about any [restaurant](location) in the hotel?
-    - are there [restaurants](location) in the hotel?
-    - number of [restaurants](location)?
-    - can i find [restaurants](location) here?
-    - i heard there is a [restaurant](location) also
-    - inform me about the [restaurant](location)
-    - where is [restaurant](location)?
+    - does the hotel have a restaurant?
+    - do you have a restaurant?
+    - is there a restaurant?
+    - is there a restaurant in the hotel?
+    - tell me about the restaurant
+    - can you tell me about any restaurant in the hotel?
+    - are there restaurants in the hotel?
+    - number of restaurants?
+    - can i find restaurants here?
+    - i heard there is a restaurant also
+    - inform me about the restaurant
+    - where is restaurant?
   
 - intent: faq_breakfast_avail
   examples: | 
@@ -337,15 +337,15 @@ nlu:
 
 - intent: faq_restaurant_time
   examples: | 
-    - what are timings of your [restaurant](location)?
-    - what is the time of the [restaurant](location)?
-    - timings of [restaurant](location)
-    - [restaurant](location) open time
-    - [restaurant](location) open timings
-    - [restaurant](location) timings
-    - till when [restaurant](location) remain open?
-    - till what time will the [restaurant](location) remain open?
-    - can you share the timings of [restaurant](location)?
+    - what are timings of your restaurant?
+    - what is the time of the restaurant?
+    - timings of restaurant
+    - restaurant open time
+    - restaurant open timings
+    - restaurant timings
+    - till when restaurant remain open?
+    - till what time will the restaurant remain open?
+    - can you share the timings of restaurant?
   
 - intent: add_reservation
   examples: |
