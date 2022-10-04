@@ -1,9 +1,81 @@
 {
+  "[AA57912](reservation_id)": {
+    "precision": 0.5454545454545454,
+    "recall": 1.0,
+    "f1-score": 0.7058823529411764,
+    "support": 6
+  },
+  "form_cleaning": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "show_reservation_id": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "mood_unhappy": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 24
+  },
+  "add_reservation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_see_reservation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_edit_cleaning_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_see_cleaning_schedule": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "form_edit_cleaning_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_check_cleaning_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
   "utter_did_that_help": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 3
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5
   },
   "utter_greet": {
     "precision": 1.0,
@@ -17,17 +89,11 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "action_listen": {
+  "goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 16
-  },
-  "affirm": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
+    "support": 2
   },
   "bot_challenge": {
     "precision": 1.0,
@@ -35,35 +101,35 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "goodbye": {
+  "schedule_room_cleaning": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
+    "support": 1
   },
-  "utter_cheer_up": {
+  "action_delete_reservation": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 3
+    "support": 1
   },
-  "greet": {
+  "action_save_reservation": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 5
+    "support": 1
   },
-  "mood_great": {
+  "delete_reservation": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
+    "support": 1
   },
-  "utter_happy": {
+  "edit_reservation": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 3
+    "support": 1
   },
   "utter_goodbye": {
     "precision": 1.0,
@@ -71,41 +137,113 @@
     "f1-score": 1.0,
     "support": 4
   },
+  "action_booking_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "form_edit_book_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "utter_happy": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "utter_cheer_up": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "edit_cleaning_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "see_cleaning_schedule": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
   "deny": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "mood_unhappy": {
+  "book_room": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 3
+    "support": 1
   },
-  "accuracy": 1.0,
-  "macro avg": {
+  "action_edit_reservation": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 51
+    "support": 1
+  },
+  "None": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 5
+  },
+  "form_book_room": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_schedule_cleaning": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "mood_great": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "affirm": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "accuracy": 0.945054945054945,
+  "macro avg": {
+    "precision": 0.9606879606879607,
+    "recall": 0.972972972972973,
+    "f1-score": 0.9650238473767885,
+    "support": 91
   },
   "weighted avg": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 51
+    "precision": 0.9150849150849152,
+    "recall": 0.945054945054945,
+    "f1-score": 0.9256625727213963,
+    "support": 91
   },
   "micro avg": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 51
+    "precision": 0.945054945054945,
+    "recall": 0.945054945054945,
+    "f1-score": 0.945054945054945,
+    "support": 91
   },
   "conversation_accuracy": {
     "accuracy": 1.0,
-    "correct": 7,
+    "correct": 14,
     "with_warnings": 0,
-    "total": 7
+    "total": 14
   }
 }

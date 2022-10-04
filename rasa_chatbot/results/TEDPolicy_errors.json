@@ -1,0 +1,74 @@
+[
+  {
+    "text": "I want to have my room with ID AA57912 cleaned",
+    "entities": [
+      {
+        "start": 31,
+        "end": 38,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Cleaning schedule with ID AA57912",
+    "entities": [
+      {
+        "start": 26,
+        "end": 33,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Show reservation with ID AA57912",
+    "entities": [
+      {
+        "start": 25,
+        "end": 32,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "delete reservation with ID AA57912",
+    "entities": [
+      {
+        "start": 27,
+        "end": 34,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "edit reservation with ID AA57912",
+    "entities": [
+      {
+        "start": 25,
+        "end": 32,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to edit the cleaning schedule with reservation ID AA57912?",
+    "entities": [
+      {
+        "start": 57,
+        "end": 64,
+        "value": "AA57912",
+        "entity": "reservation_id"
+      }
+    ],
+    "predicted_entities": []
+  }
+]

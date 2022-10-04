@@ -2,6 +2,128 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
+
+#BOOKING ROOM
+- story: booking path
+  steps:
+  - user : |
+      i want to book a room
+    intent: book_room
+  - action: form_book_room
+  - active_loop: form_book_room
+  - slot_was_set:
+    - requested_slot: room_type
+  - slot_was_set:
+    - room_type: Simple
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - requested_slot: days
+  - slot_was_set:
+    - days: '1'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_booking_room
+  - user: |
+      confirm
+    intent: add_reservation
+  - action: action_save_reservation
+
+#CLEANING ROOM
+- story: cleaning path
+  steps:
+  - user : |
+      I want to have my room with ID [AA57912]{"entity":"reservation_id"} cleaned
+    intent: schedule_room_cleaning
+  - action: form_cleaning
+  - active_loop: form_cleaning
+  - slot_was_set:
+    - requested_slot: duration
+  - slot_was_set:
+    - duration: '2'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_schedule_cleaning
+
+#SEE CLEANING
+- story: see cleaning schedule path
+  steps:
+  - user : | 
+      Cleaning schedule with ID [AA57912]{"entity":"reservation_id"}
+    intent: see_cleaning_schedule
+  - action: action_see_cleaning_schedule
+
+#SEE RESERVATION
+- story: see reservation path
+  steps:
+  - user: |
+      Show reservation with ID [AA57912]{"entity":"reservation_id"}
+    intent: show_reservation_id
+  - action: action_see_reservation
+
+#DELETE RESERVATION
+- story: delete reservation path
+  steps:
+  - user: |
+      delete reservation with ID [AA57912]{"entity":"reservation_id"}
+    intent: delete_reservation
+  - action: action_delete_reservation
+
+#EDIT BOOKING ROOM
+- story: edit booking room path
+  steps:
+  - user: |
+      edit reservation with ID [AA57912]{"entity":"reservation_id"}
+    intent: edit_reservation
+  - action: form_edit_book_room
+  - active_loop: form_edit_book_room
+  - slot_was_set:
+    - requested_slot: room_type
+  - slot_was_set:
+    - room_type: Deluxe
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: days
+  - slot_was_set:
+    - days: '3'
+    - requested_slot: null 
+  - active_loop: null
+  - action: action_edit_reservation
+
+  #EDIT CLEANING ROOM - right
+- story: edit cleaning room path
+  steps:
+  - user: |
+      I want to edit the cleaning schedule with reservation ID [AA57912]{"entity":"reservation_id"}?
+    intent: edit_cleaning_room
+  - action: action_check_cleaning_room 
+  - action: form_edit_cleaning_room
+  - active_loop: form_edit_cleaning_room
+  - slot_was_set:
+    - requested_slot: duration
+  - slot_was_set:
+    - duration: '1'
+  - slot_was_set:
+    - requested_slot: null 
+  - active_loop: null
+  - action: action_edit_cleaning_room
+
+
+
+
+
+
+
+
+
+################################### story originali rasa
 - story: happy path 1
   steps:
   - user: |
