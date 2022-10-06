@@ -361,18 +361,20 @@ class ActionCheckCleaningRoom(Action):
         if(len(cleaning_index) == 0 and cleaning_id == "None"):
             condition = df['Reservation ID'] == reservation_id
             cleaning_index = index[condition]
+            #cleaning_id= df.loc[df['Reservation ID'] == reservation_id, "Cleaning ID"].values[0]
+
         elif (len(cleaning_index) == 0 and cleaning_id != "None"):
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
-            return [[SlotSet("error", True)]]
+            return [SlotSet("error", True)]
 
         # get index of the row with specified order ID
         if len(cleaning_index) == 0:
             # reservation not found
             # send message to the user
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
-            return [[SlotSet("error", True)]]
+            return [SlotSet("error", True)]
         
-        return [[SlotSet("error", False)]]
+        return [SlotSet("error", False)]
 
 class ActionEditCleaningRoom(Action):
 
@@ -382,6 +384,8 @@ class ActionEditCleaningRoom(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        
 
         cleaning_id = str(tracker.get_slot('cleaning_id'))
         reservation_id = str(tracker.get_slot('reservation_id'))     
@@ -433,6 +437,7 @@ class ActionEditCleaningRoom(Action):
         if(len(cleaning_index) == 0 and cleaning_id == "None"):
             condition = df['Reservation ID'] == reservation_id
             cleaning_index = index[condition]
+            cleaning_id= df.loc[df['Reservation ID'] == reservation_id, "Cleaning ID"].values[0]
         elif (len(cleaning_index) == 0 and cleaning_id != "None"):
             dispatcher.utter_message(response='utter_no_cleaning_scheduled')
             return []

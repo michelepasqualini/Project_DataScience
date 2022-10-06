@@ -135,7 +135,7 @@ slots:
 
   error:
     type: bool
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: error
