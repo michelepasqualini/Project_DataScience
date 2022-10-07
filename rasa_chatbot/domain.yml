@@ -355,6 +355,7 @@ actions:
   - utter_start
   - utter_end
   - utter_no_cleaning_scheduled
+  - action_check_booking_room
   
 
 

@@ -209,6 +209,36 @@ class ActionDeleteReservation(Action):
             dispatcher.utter_message(text=f'The reservation with the ID {reservation_id} has been deleted with success!')
         
         return [SlotSet("reservation_id"), SlotSet("cleaning_id")]
+    
+class ActionCheckBookingRoom(Action):
+    def name(self) -> Text:
+        return 'action_check_booking_room'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        reservation_id = str(tracker.get_slot('reservation_id'))
+
+        if(reservation_id == "None"):
+            dispatcher.utter_message(text=f'Error: specify the reservation ID!')
+            return [SlotSet("error", True)]
+
+        df = pd.read_csv(reservations_filename)
+
+        # get index of the row with specified order ID
+        index = df.index
+        condition = df['Reservation ID'] == reservation_id
+        reservation_index = index[condition]
+        if len(reservation_index) == 0:
+            # reservation not found
+            # send message to the user
+            dispatcher.utter_message(response='utter_no_reservation')
+            return [SlotSet("error", True)]
+           
+
+        return [SlotSet("error", False)]
+     
 
 
 ##########################################################################

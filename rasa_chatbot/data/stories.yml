@@ -92,12 +92,25 @@ stories:
 - story: edit booking room path
   steps:
   - intent: edit_reservation
+  - action: action_check_booking_room 
+  - slot_was_set:
+    - error: false
   - action: form_edit_book_room
   - active_loop: form_edit_book_room
   - slot_was_set:
     - requested_slot: null 
   - active_loop: null
   - action: action_edit_reservation
+
+#EDIT BOOKING ROOM wrong
+- story: edit booking room path
+  steps:
+  - intent: edit_reservation
+  - action: action_check_booking_room 
+  - slot_was_set:
+    - error: true
+
+
   
 #EDIT CLEANING ROOM - right
 - story: edit cleaning room path
@@ -113,6 +126,8 @@ stories:
   - active_loop: null
   - action: action_edit_cleaning_room
   
+  
+#EDIT CLEANING ROOM - wrong
 - story: edit cleaning room path wrong
   steps:
   - intent: edit_cleaning_room

@@ -53,6 +53,9 @@ rules:
 - rule: activating the edit booking room form
   steps:
   - intent: edit_reservation
+  - action: action_check_booking_room 
+  - slot_was_set:
+    - error: false 
   - action: form_edit_book_room
   - active_loop: form_edit_book_room
 
@@ -76,13 +79,6 @@ rules:
   - action: form_edit_cleaning_room
   - active_loop: form_edit_cleaning_room
  
-#- rule: activating the edit cleaning room form wrong
-#  steps:
-#  - intent: edit_cleaning_room
-#  - action: action_check_cleaning_room
-#  - slot_was_set:
-#    - error: true 
-#  - action: utter_no_cleaning_scheduled
 
 - rule: submit edit cleaning room form
   condition:
