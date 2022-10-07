@@ -228,10 +228,22 @@ class ActionScheduleCleaning(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         reservation_id = str(tracker.get_slot('reservation_id'))
-
+       
         if(reservation_id == "None"):
             dispatcher.utter_message(text=f'Error: specify the reservation ID!')
-            return []
+            return [SlotSet("cleaning_id"), SlotSet("reservation_id"), SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        #check if reservation id exists
+        dfr = pd.read_csv(reservations_filename)
+        if(len(dfr.loc[dfr['Reservation ID'] == reservation_id, "Reservation ID"].values)==0):
+            dispatcher.utter_message(text='This reservation does not exists')
+            return [SlotSet("cleaning_id"), SlotSet("reservation_id"), SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
+
+        #check if there is cleaning schedule for this room
+        df = pd.read_csv(clean_filename)
+        if(len(df.loc[df['Reservation ID'] == reservation_id, "Cleaning ID"].values)>0):
+            dispatcher.utter_message(text='This room has already a cleaning schedule')
+            return [SlotSet("cleaning_id"), SlotSet("reservation_id"), SlotSet("duration"), SlotSet("time_unit"), SlotSet("hour"), SlotSet("minute"), SlotSet("suff")]
 
         duration = tracker.get_slot("duration")
         unit = tracker.get_slot("time_unit")
